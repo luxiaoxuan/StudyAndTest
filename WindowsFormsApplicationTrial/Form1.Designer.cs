@@ -43,12 +43,11 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(282, 255);
             this.Controls.Add(this.btnClickMe);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Smart Application";
             this.ResumeLayout(false);
 
         }
