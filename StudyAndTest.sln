@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticStudy", "StaticStudy\StaticStudy.csproj", "{AABBFEBA-C3B2-48CC-9CB3-3B0D82D56897}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeleniumStudy", "SeleniumStudy\SeleniumStudy.csproj", "{142637CF-3F7E-4838-949E-0491223A6BEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExcelOperationStudy", "ExcelOperationStudy\ExcelOperationStudy.csproj", "{934B460D-E20E-4BE9-B85D-30F64A7BE483}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityStudy", "UnityStudy\UnityStudy.csproj", "{396B07D1-7615-40D6-9FF3-917A2455863E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmStudy", "AlgorithmStudy\AlgorithmStudy.csproj", "{224ED0C6-D3C1-4942-A7E2-8FA3DE3F2CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlgorithmStudyTest", "AlgorithmStudyTest\AlgorithmStudyTest.csproj", "{8629E647-2D58-49F0-85C4-6B57B4B0260A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AABBFEBA-C3B2-48CC-9CB3-3B0D82D56897}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AABBFEBA-C3B2-48CC-9CB3-3B0D82D56897}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AABBFEBA-C3B2-48CC-9CB3-3B0D82D56897}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AABBFEBA-C3B2-48CC-9CB3-3B0D82D56897}.Release|Any CPU.Build.0 = Release|Any CPU
+		{142637CF-3F7E-4838-949E-0491223A6BEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{142637CF-3F7E-4838-949E-0491223A6BEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{142637CF-3F7E-4838-949E-0491223A6BEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{142637CF-3F7E-4838-949E-0491223A6BEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{934B460D-E20E-4BE9-B85D-30F64A7BE483}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{934B460D-E20E-4BE9-B85D-30F64A7BE483}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{934B460D-E20E-4BE9-B85D-30F64A7BE483}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{934B460D-E20E-4BE9-B85D-30F64A7BE483}.Release|Any CPU.Build.0 = Release|Any CPU
+		{396B07D1-7615-40D6-9FF3-917A2455863E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{396B07D1-7615-40D6-9FF3-917A2455863E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{396B07D1-7615-40D6-9FF3-917A2455863E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{396B07D1-7615-40D6-9FF3-917A2455863E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{224ED0C6-D3C1-4942-A7E2-8FA3DE3F2CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{224ED0C6-D3C1-4942-A7E2-8FA3DE3F2CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{224ED0C6-D3C1-4942-A7E2-8FA3DE3F2CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{224ED0C6-D3C1-4942-A7E2-8FA3DE3F2CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8629E647-2D58-49F0-85C4-6B57B4B0260A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8629E647-2D58-49F0-85C4-6B57B4B0260A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8629E647-2D58-49F0-85C4-6B57B4B0260A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8629E647-2D58-49F0-85C4-6B57B4B0260A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
