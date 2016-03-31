@@ -33,11 +33,11 @@
             // 
             // btnClickMe
             // 
-            this.btnClickMe.Location = new System.Drawing.Point(13, 13);
+            this.btnClickMe.Location = new System.Drawing.Point(85, 90);
             this.btnClickMe.Name = "btnClickMe";
-            this.btnClickMe.Size = new System.Drawing.Size(257, 67);
+            this.btnClickMe.Size = new System.Drawing.Size(120, 60);
             this.btnClickMe.TabIndex = 0;
-            this.btnClickMe.Text = "Click Me !";
+            this.btnClickMe.Text = "Smart Application";
             this.btnClickMe.UseVisualStyleBackColor = true;
             this.btnClickMe.Click += new System.EventHandler(this.btnClickMe_Click);
             // 
