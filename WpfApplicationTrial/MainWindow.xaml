@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplicationTrial"
         mc:Ignorable="d"
-        Title="Smart Application" Height="300" Width="200" ResizeMode="CanMinimize">
+        Title="Smart Application" Height="300" Width="960" ResizeMode="CanMinimize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
@@ -15,8 +15,8 @@
             <RowDefinition />
             <RowDefinition />
         </Grid.RowDefinitions>
-        <Button x:Name="button1" Content="Smart Application Smart Application" Grid.ColumnSpan="2" />
-        <Button x:Name="button2" Content="Smart Application Smart Application" Grid.Row="1" />
+        <Button x:Name="button1" Content="C# is a multi-purpose computer programming language suitable for a wide variety of development needs. This Wikibook introduces C# language fundamentals and covers a variety of the base class libraries (BCL) provided by the Microsoft .NET Framework." Grid.ColumnSpan="2" />
+        <Button x:Name="button2" Content="C# is a multi-purpose computer programming language suitable for a wide variety of development needs. This Wikibook introduces C# language fundamentals and covers a variety of the base class libraries (BCL) provided by the Microsoft .NET Framework." Grid.Row="1" />
         <Button x:Name="button3" Content="Smart Application Smart Application" Grid.Row="1" Grid.Column="1" />
     </Grid>
 </Window>
