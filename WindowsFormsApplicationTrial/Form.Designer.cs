@@ -113,7 +113,7 @@
             // 
             this.btnDPIPixel.Font = new System.Drawing.Font("MS UI Gothic", 12F);
             this.btnDPIPixel.ForeColor = System.Drawing.Color.Red;
-            this.btnDPIPixel.Location = new System.Drawing.Point(252, 40);
+            this.btnDPIPixel.Location = new System.Drawing.Point(251, 40);
             this.btnDPIPixel.Margin = new System.Windows.Forms.Padding(0);
             this.btnDPIPixel.Name = "btnDPIPixel";
             this.btnDPIPixel.Size = new System.Drawing.Size(250, 40);
