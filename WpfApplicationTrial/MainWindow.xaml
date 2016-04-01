@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Smart Application" Height="300" Width="200" ResizeMode="CanMinimize">
     <Grid>
-        <Button x:Name="button" Content="Smart Application" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Button x:Name="button1" Content="Smart Application Smart Application" Grid.ColumnSpan="2" />
+        <Button x:Name="button2" Content="Smart Application Smart Application" Grid.Row="1" />
+        <Button x:Name="button3" Content="Smart Application Smart Application" Grid.Row="1" Grid.Column="1" />
     </Grid>
 </Window>
