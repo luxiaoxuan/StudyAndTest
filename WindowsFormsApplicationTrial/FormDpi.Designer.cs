@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplicationTrial
 {
-    partial class Form2
+    partial class FormDpi
     {
         /// <summary>
         /// Required designer variable.

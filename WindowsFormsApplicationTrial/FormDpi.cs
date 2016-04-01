@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrial
 {
-    public partial class Form1 : Form
+    public partial class FormDpi : System.Windows.Forms.Form
     {
-        public Form1()
+        public FormDpi()
         {
             InitializeComponent();
-        }
-
-        private void btnClickMe_Click(object sender, EventArgs e)
-        {
-            new Form2().Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            new Form3().Show();
         }
     }
 }

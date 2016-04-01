@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrial
 {
-    public partial class Form2 : Form
+    public partial class FormFont : System.Windows.Forms.Form
     {
-        public Form2()
+        public FormFont()
         {
             InitializeComponent();
         }
