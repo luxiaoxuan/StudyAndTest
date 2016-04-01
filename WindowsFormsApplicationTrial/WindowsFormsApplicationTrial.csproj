@@ -64,11 +64,17 @@
     <Compile Include="FormDpi.Designer.cs">
       <DependentUpon>FormDpi.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormNone.cs">
+    <Compile Include="FormNonePixel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormNone.Designer.cs">
-      <DependentUpon>FormNone.cs</DependentUpon>
+    <Compile Include="FormNonePixel.Designer.cs">
+      <DependentUpon>FormNonePixel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormNonePoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormNonePoint.Designer.cs">
+      <DependentUpon>FormNonePoint.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -81,8 +87,11 @@
     <EmbeddedResource Include="FormDpi.resx">
       <DependentUpon>FormDpi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormNone.resx">
-      <DependentUpon>FormNone.cs</DependentUpon>
+    <EmbeddedResource Include="FormNonePixel.resx">
+      <DependentUpon>FormNonePixel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormNonePoint.resx">
+      <DependentUpon>FormNonePoint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrial
 {
-    public partial class FormNone : System.Windows.Forms.Form
+    public partial class FormNonePixel : System.Windows.Forms.Form
     {
-        public FormNone()
+        public FormNonePixel()
         {
             InitializeComponent();
         }

@@ -29,7 +29,7 @@ namespace WindowsFormsApplicationTrial
 
         private void btnNone_Click(object sender, EventArgs e)
         {
-            new FormNone().Show();
+            new FormNonePoint().Show();
         }
     }
 }

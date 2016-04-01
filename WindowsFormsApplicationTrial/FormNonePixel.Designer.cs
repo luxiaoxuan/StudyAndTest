@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplicationTrial
 {
-    partial class FormNone
+    partial class FormNonePixel
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // 
             // btnClickMe
             // 
-            this.btnClickMe.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.btnClickMe.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.btnClickMe.Location = new System.Drawing.Point(0, 0);
             this.btnClickMe.Margin = new System.Windows.Forms.Padding(0);
             this.btnClickMe.Name = "btnClickMe";
@@ -46,7 +46,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(128)));
             this.textBox1.Location = new System.Drawing.Point(80, 82);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.MaxLength = 45;
@@ -58,21 +58,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.label1.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.label1.Location = new System.Drawing.Point(0, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 16);
             this.label1.TabIndex = 3;
             this.label1.Text = "SmartApp:";
             // 
-            // Form3
+            // FormNonePixel
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(944, 162);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnClickMe);
-            this.Name = "Form3";
+            this.Name = "FormNonePixel";
             this.Text = "Form3";
             this.ResumeLayout(false);
             this.PerformLayout();
