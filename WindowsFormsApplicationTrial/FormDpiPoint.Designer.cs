@@ -38,11 +38,11 @@
             this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.textBox1.Location = new System.Drawing.Point(80, 82);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.textBox1.MaxLength = 45;
+            this.textBox1.MaxLength = 26;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(400, 23);
+            this.textBox1.Size = new System.Drawing.Size(200, 23);
             this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "012345678901234567890123456789012345678901234";
+            this.textBox1.Text = "abcdefghijklmnopqrstuvwxyz";
             // 
             // btnClickMe
             // 
