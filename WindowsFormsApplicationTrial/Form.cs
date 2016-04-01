@@ -22,19 +22,26 @@ namespace WindowsFormsApplicationTrial
             new FormFont().Show();
         }
 
-        private void btnDpi_Click(object sender, EventArgs e)
+        private void btnDPIPoint_Click(object sender, EventArgs e)
         {
-            new FormDpi().Show();
+            new FormDpiPoint().Show();
         }
 
-        private void btnNone_Click(object sender, EventArgs e)
+        private void btnDPIPixel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnNonePoint_Click(object sender, EventArgs e)
         {
             new FormNonePoint().Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnNonePixel_Click(object sender, EventArgs e)
         {
             new FormNonePixel().Show();
         }
+
     }
 }

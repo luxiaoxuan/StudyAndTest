@@ -31,9 +31,10 @@
             this.btnFont = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnDpi = new System.Windows.Forms.Button();
-            this.btnNone = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnDPIPoint = new System.Windows.Forms.Button();
+            this.btnNonePoint = new System.Windows.Forms.Button();
+            this.btnNonePixel = new System.Windows.Forms.Button();
+            this.btnDPIPixel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnFont
@@ -69,49 +70,63 @@
             this.textBox2.TabIndex = 2;
             this.textBox2.Text = "0123456789012345678901234567890123456789";
             // 
-            // btnDpi
+            // btnDPIPoint
             // 
-            this.btnDpi.Location = new System.Drawing.Point(251, 0);
-            this.btnDpi.Margin = new System.Windows.Forms.Padding(0);
-            this.btnDpi.Name = "btnDpi";
-            this.btnDpi.Size = new System.Drawing.Size(250, 80);
-            this.btnDpi.TabIndex = 3;
-            this.btnDpi.Text = "Smart Application Dpi";
-            this.btnDpi.UseVisualStyleBackColor = true;
-            this.btnDpi.Click += new System.EventHandler(this.btnDpi_Click);
+            this.btnDPIPoint.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.btnDPIPoint.Location = new System.Drawing.Point(251, 0);
+            this.btnDPIPoint.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDPIPoint.Name = "btnDPIPoint";
+            this.btnDPIPoint.Size = new System.Drawing.Size(250, 40);
+            this.btnDPIPoint.TabIndex = 3;
+            this.btnDPIPoint.Text = "UI: DPI; Text: Point";
+            this.btnDPIPoint.UseVisualStyleBackColor = true;
+            this.btnDPIPoint.Click += new System.EventHandler(this.btnDPIPoint_Click);
             // 
-            // btnNone
+            // btnNonePoint
             // 
-            this.btnNone.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.btnNone.Location = new System.Drawing.Point(502, 0);
-            this.btnNone.Margin = new System.Windows.Forms.Padding(0);
-            this.btnNone.Name = "btnNone";
-            this.btnNone.Size = new System.Drawing.Size(250, 40);
-            this.btnNone.TabIndex = 4;
-            this.btnNone.Text = "UI: None; Text: Point";
-            this.btnNone.UseVisualStyleBackColor = true;
-            this.btnNone.Click += new System.EventHandler(this.btnNone_Click);
+            this.btnNonePoint.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnNonePoint.Location = new System.Drawing.Point(502, 0);
+            this.btnNonePoint.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNonePoint.Name = "btnNonePoint";
+            this.btnNonePoint.Size = new System.Drawing.Size(250, 40);
+            this.btnNonePoint.TabIndex = 4;
+            this.btnNonePoint.Text = "UI: None; Text: Point";
+            this.btnNonePoint.UseVisualStyleBackColor = true;
+            this.btnNonePoint.Click += new System.EventHandler(this.btnNonePoint_Click);
             // 
-            // button1
+            // btnNonePixel
             // 
-            this.button1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.button1.Location = new System.Drawing.Point(502, 40);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(250, 40);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "UI: None; Text: Pixel";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnNonePixel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnNonePixel.Location = new System.Drawing.Point(502, 40);
+            this.btnNonePixel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnNonePixel.Name = "btnNonePixel";
+            this.btnNonePixel.Size = new System.Drawing.Size(250, 40);
+            this.btnNonePixel.TabIndex = 5;
+            this.btnNonePixel.Text = "UI: None; Text: Pixel";
+            this.btnNonePixel.UseVisualStyleBackColor = true;
+            this.btnNonePixel.Click += new System.EventHandler(this.btnNonePixel_Click);
+            // 
+            // btnDPIPixel
+            // 
+            this.btnDPIPixel.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.btnDPIPixel.Location = new System.Drawing.Point(252, 40);
+            this.btnDPIPixel.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDPIPixel.Name = "btnDPIPixel";
+            this.btnDPIPixel.Size = new System.Drawing.Size(250, 40);
+            this.btnDPIPixel.TabIndex = 6;
+            this.btnDPIPixel.Text = "UI: DPI; Text: Pixel";
+            this.btnDPIPixel.UseVisualStyleBackColor = true;
+            this.btnDPIPixel.Click += new System.EventHandler(this.btnDPIPixel_Click);
             // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(754, 124);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.btnNone);
-            this.Controls.Add(this.btnDpi);
+            this.Controls.Add(this.btnDPIPixel);
+            this.Controls.Add(this.btnNonePixel);
+            this.Controls.Add(this.btnNonePoint);
+            this.Controls.Add(this.btnDPIPoint);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnFont);
@@ -128,9 +143,10 @@
         private System.Windows.Forms.Button btnFont;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button btnDpi;
-        private System.Windows.Forms.Button btnNone;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnDPIPoint;
+        private System.Windows.Forms.Button btnNonePoint;
+        private System.Windows.Forms.Button btnNonePixel;
+        private System.Windows.Forms.Button btnDPIPixel;
     }
 }
 

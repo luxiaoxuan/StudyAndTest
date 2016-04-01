@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrial
 {
-    public partial class FormDpi : System.Windows.Forms.Form
+    public partial class FormDpiPoint : System.Windows.Forms.Form
     {
-        public FormDpi()
+        public FormDpiPoint()
         {
             InitializeComponent();
         }
