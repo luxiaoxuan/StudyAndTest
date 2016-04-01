@@ -73,7 +73,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnClickMe);
             this.Name = "FormNonePixel";
-            this.Text = "Form3";
+            this.Text = "UI: None & Text: Pixel";
             this.ResumeLayout(false);
             this.PerformLayout();
 

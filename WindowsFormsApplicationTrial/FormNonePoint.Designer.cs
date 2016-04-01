@@ -65,15 +65,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "SmartApp:";
             // 
-            // Form3
+            // FormNonePoint
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(944, 162);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnClickMe);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "FormNonePoint";
+            this.Text = "UI: None & Text: Point";
             this.ResumeLayout(false);
             this.PerformLayout();
 
