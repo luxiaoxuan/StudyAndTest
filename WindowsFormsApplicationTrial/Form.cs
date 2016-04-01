@@ -17,10 +17,16 @@ namespace WindowsFormsApplicationTrial
             InitializeComponent();
         }
 
-        private void btnFont_Click(object sender, EventArgs e)
+        private void btnFontPoint_Click(object sender, EventArgs e)
         {
-            new FormFont().Show();
+            new FormFontPoint().Show();
         }
+
+        private void btnFontPixel_Click(object sender, EventArgs e)
+        {
+            new FormFontPixel().Show();
+        }
+
 
         private void btnDPIPoint_Click(object sender, EventArgs e)
         {
@@ -42,6 +48,5 @@ namespace WindowsFormsApplicationTrial
         {
             new FormNonePixel().Show();
         }
-
     }
 }

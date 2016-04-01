@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplicationTrial
 {
-    partial class FormFont
+    partial class FormFontPixel
     {
         /// <summary>
         /// Required designer variable.
@@ -35,8 +35,7 @@
             // 
             // textBox1
             // 
-            //this.textBox1.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.textBox1.Location = new System.Drawing.Point(80, 82);
+            this.textBox1.Location = new System.Drawing.Point(80, 83);
             this.textBox1.Margin = new System.Windows.Forms.Padding(0);
             this.textBox1.MaxLength = 26;
             this.textBox1.Name = "textBox1";
@@ -57,14 +56,13 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            //this.label1.Font = new System.Drawing.Font("MS UI Gothic", 12F);
-            this.label1.Location = new System.Drawing.Point(0, 82);
+            this.label1.Location = new System.Drawing.Point(0, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "SmartApp:";
             // 
-            // FormFont
+            // FormFontPixel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -72,10 +70,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.btnClickMe);
-            //this.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "FormFont";
-            this.Text = "Form2";
+            this.Font = new System.Drawing.Font("MS UI Gothic", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "FormFontPixel";
+            this.Text = "UI: Font & Text: Pixel";
             this.ResumeLayout(false);
             this.PerformLayout();
 

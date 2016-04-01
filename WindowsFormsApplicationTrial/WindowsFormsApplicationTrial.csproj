@@ -58,11 +58,17 @@
     <Compile Include="FormDpiPixel.Designer.cs">
       <DependentUpon>FormDpiPixel.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormFont.cs">
+    <Compile Include="FormFontPixel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormFont.Designer.cs">
-      <DependentUpon>FormFont.cs</DependentUpon>
+    <Compile Include="FormFontPixel.Designer.cs">
+      <DependentUpon>FormFontPixel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFontPoint.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFontPoint.Designer.cs">
+      <DependentUpon>FormFontPoint.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDpiPoint.cs">
       <SubType>Form</SubType>
@@ -90,8 +96,11 @@
     <EmbeddedResource Include="FormDpiPixel.resx">
       <DependentUpon>FormDpiPixel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormFont.resx">
-      <DependentUpon>FormFont.cs</DependentUpon>
+    <EmbeddedResource Include="FormFontPixel.resx">
+      <DependentUpon>FormFontPixel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFontPoint.resx">
+      <DependentUpon>FormFontPoint.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDpiPoint.resx">
       <DependentUpon>FormDpiPoint.cs</DependentUpon>
