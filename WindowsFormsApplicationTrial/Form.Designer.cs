@@ -73,6 +73,7 @@
             // btnDPIPoint
             // 
             this.btnDPIPoint.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.btnDPIPoint.ForeColor = System.Drawing.Color.Green;
             this.btnDPIPoint.Location = new System.Drawing.Point(251, 0);
             this.btnDPIPoint.Margin = new System.Windows.Forms.Padding(0);
             this.btnDPIPoint.Name = "btnDPIPoint";
@@ -85,6 +86,7 @@
             // btnNonePoint
             // 
             this.btnNonePoint.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnNonePoint.ForeColor = System.Drawing.Color.Red;
             this.btnNonePoint.Location = new System.Drawing.Point(502, 0);
             this.btnNonePoint.Margin = new System.Windows.Forms.Padding(0);
             this.btnNonePoint.Name = "btnNonePoint";
@@ -97,6 +99,7 @@
             // btnNonePixel
             // 
             this.btnNonePixel.Font = new System.Drawing.Font("MS UI Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.btnNonePixel.ForeColor = System.Drawing.Color.Green;
             this.btnNonePixel.Location = new System.Drawing.Point(502, 40);
             this.btnNonePixel.Margin = new System.Windows.Forms.Padding(0);
             this.btnNonePixel.Name = "btnNonePixel";
@@ -109,6 +112,7 @@
             // btnDPIPixel
             // 
             this.btnDPIPixel.Font = new System.Drawing.Font("MS UI Gothic", 12F);
+            this.btnDPIPixel.ForeColor = System.Drawing.Color.Red;
             this.btnDPIPixel.Location = new System.Drawing.Point(252, 40);
             this.btnDPIPixel.Margin = new System.Windows.Forms.Padding(0);
             this.btnDPIPixel.Name = "btnDPIPixel";

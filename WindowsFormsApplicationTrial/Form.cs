@@ -29,7 +29,7 @@ namespace WindowsFormsApplicationTrial
 
         private void btnDPIPixel_Click(object sender, EventArgs e)
         {
-
+            new FormDpiPixel().Show();
         }
 
 
