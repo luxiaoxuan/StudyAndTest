@@ -5,7 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrial
@@ -15,6 +15,15 @@ namespace WindowsFormsApplicationTrial
         public Form()
         {
             InitializeComponent();
+
+            var dpiX = 0f;
+            var dpiY = 0f;
+            using (var graphics = Graphics.FromHwnd(IntPtr.Zero))
+            {
+                dpiX = graphics.DpiX;
+                dpiY = graphics.DpiY;
+            }
+            MessageBox.Show(string.Format("DpiX: {0}\r\nDpiY: {1}", dpiX, dpiY));
         }
 
         private void btnFontPoint_Click(object sender, EventArgs e)
