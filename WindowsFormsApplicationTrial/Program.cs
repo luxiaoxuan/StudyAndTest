@@ -17,6 +17,16 @@ namespace WindowsFormsApplicationTrial
             //SetProcessDPIAware();// ここかマニフェストかに指定することでDpiバーチャルを使わないとする
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            var dpiX = 0f;
+            var dpiY = 0f;
+            using (var graphics = System.Drawing.Graphics.FromHwnd(IntPtr.Zero))
+            {
+                dpiX = graphics.DpiX;
+                dpiY = graphics.DpiY;
+            }
+            MessageBox.Show(string.Format("DpiX: {0}\r\nDpiY: {1}", dpiX, dpiY));
+
             Application.Run(new Form());
         }
 
