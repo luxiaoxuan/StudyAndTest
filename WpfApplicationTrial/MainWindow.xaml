@@ -5,18 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplicationTrial"
         mc:Ignorable="d"
-        Title="Smart Application" Height="300" Width="960" ResizeMode="CanMinimize">
+        Title="Smart Application" Height="300" Width="600" ResizeMode="CanMinimize">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition />
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
-        <Button x:Name="button1" Content="C# is a multi-purpose computer programming language suitable for a wide variety of development needs. This Wikibook introduces C# language fundamentals and covers a variety of the base class libraries (BCL) provided by the Microsoft .NET Framework." Grid.ColumnSpan="2" />
-        <Button x:Name="button2" Content="C# is a multi-purpose computer programming language suitable for a wide variety of development needs. This Wikibook introduces C# language fundamentals and covers a variety of the base class libraries (BCL) provided by the Microsoft .NET Framework." Grid.Row="1" />
-        <Button x:Name="button3" Content="Smart Application Smart Application" Grid.Row="1" Grid.Column="1" />
+        <GroupBox x:Name="groupBox" Header="GroupBox" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="252" Width="574">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="3*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="4*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="lbName" Content="Name:" HorizontalAlignment="Left" />
+                <TextBox x:Name="txtName" Grid.Column="1" HorizontalAlignment="Left" Height="30" Width="200">
+                    <TextBox.Text>
+                        <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <local:LengthValidationRule />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Label x:Name="lbAge" Content="Age:" Grid.Row="1" HorizontalAlignment="Left" />
+                <TextBox x:Name="txtAge" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Height="30" Width="200">
+                    <TextBox.Text>
+                        <Binding Path="Age" UpdateSourceTrigger="PropertyChanged" ValidatesOnDataErrors="True" NotifyOnValidationError="True">
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <Button x:Name="button" Content="Button" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Width="150" Height="30" Click="button_Click"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

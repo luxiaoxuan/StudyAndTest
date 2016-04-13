@@ -20,9 +20,24 @@ namespace WpfApplicationTrial
     /// </summary>
     public partial class MainWindow : Window
     {
+        public InputData Data { get; set; }
+
+
         public MainWindow()
         {
             InitializeComponent();
+
+            this.Data = new InputData
+            {
+                Name = "Daibobo",
+            };
+            this.DataContext = this.Data;
+            //this.txtName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = this.Data, });
+        }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Data.Name = "Bode!";
         }
     }
 }

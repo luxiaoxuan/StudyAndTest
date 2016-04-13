@@ -31,6 +31,13 @@ namespace WindowsFormsApplicationTrialTest
             var txtBD = AutomationElement.FocusedElement;
             var formUserSetting = GetWindow(txtBD);
 
+            Automation.AddAutomationEventHandler(
+                TextPattern.TextChangedEvent,
+                formUserSetting,
+                TreeScope.Descendants,
+                new AutomationEventHandler(HandleTextChange));
+            //Automation.AddAutomationFocusChangedEventHandler(new AutomationFocusChangedEventHandler(HandleTextChange));
+
             vp = txtBD.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue("何じゃら日本語");
 
@@ -54,9 +61,6 @@ namespace WindowsFormsApplicationTrialTest
 
             var txtCompany = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Document));
-            //var txts = formUserSetting.FindAll(TreeScope.Descendants,
-            //    new PropertyCondition(AutomationElement.IsEnabledProperty, true));
-            //var txtCompany = txts[5];
             //var tp = txtCompany.GetCurrentPattern(TextPattern.Pattern) as TextPattern;
             //var a1 = tp.DocumentRange.GetAttributeValue(TextPattern.BackgroundColorAttribute).ToString();
             //var a2 = tp.DocumentRange.GetAttributeValue(TextPattern.FontNameAttribute).ToString();
@@ -257,6 +261,11 @@ namespace WindowsFormsApplicationTrialTest
             }
 
             return elementParent;
+        }
+
+        private void HandleTextChange(object sender, AutomationEventArgs e)
+        {
+            Debug.WriteLine((sender as AutomationElement).Current.AutomationId);
         }
     }
 }
