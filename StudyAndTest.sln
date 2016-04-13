@@ -23,6 +23,28 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplicationTria
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LXXCommon", "LXXCommon\LXXCommon.csproj", "{4A1EDF8A-5F73-4A39-A48B-FD8B5B429B33}"
 EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "LXXSite", "..\..\WebSites\LXXSite\", "{C45D5AA6-831E-4D42-854C-EC1922B9AB0C}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.5.2"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_64435"
+		Debug.AspNetCompiler.PhysicalPath = "..\..\WebSites\LXXSite\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64435\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_64435"
+		Release.AspNetCompiler.PhysicalPath = "..\..\WebSites\LXXSite\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_64435\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "64435"
+		SlnRelativePath = "..\..\WebSites\LXXSite\"
+		DefaultWebSiteLanguage = "Visual C#"
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +91,10 @@ Global
 		{4A1EDF8A-5F73-4A39-A48B-FD8B5B429B33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A1EDF8A-5F73-4A39-A48B-FD8B5B429B33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A1EDF8A-5F73-4A39-A48B-FD8B5B429B33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C45D5AA6-831E-4D42-854C-EC1922B9AB0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45D5AA6-831E-4D42-854C-EC1922B9AB0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C45D5AA6-831E-4D42-854C-EC1922B9AB0C}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{C45D5AA6-831E-4D42-854C-EC1922B9AB0C}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
