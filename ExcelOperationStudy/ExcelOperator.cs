@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LXXCommon;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace ExcelOperationStudy
     {
         public static void DoSomething1()
         {
-            var bmp = CaptureScreen();
+            var bmp = ScreenCapturer.CaptureScreen();
             Clipboard.SetImage(bmp);
 
             var wb = new Excel.Application().Workbooks.Open(@"C:\Users\u851299\Desktop\Test\TotalReport.xlsm");
@@ -47,22 +48,6 @@ namespace ExcelOperationStudy
             {
                 wb.Close(true);
             }
-        }
-
-        public static Bitmap CaptureScreen(int x, int y, int width, int height)
-        {
-            var bmp = new Bitmap(width, height);
-            using (var g = Graphics.FromImage(bmp))
-            {
-                g.CopyFromScreen(new Point(x, y), new Point(0, 0), bmp.Size);
-            }
-            return bmp;
-        }
-
-        public static Bitmap CaptureScreen()
-        {
-            Size screenSize = Screen.PrimaryScreen.Bounds.Size;
-            return CaptureScreen(0, 0, screenSize.Width, screenSize.Height);
         }
     }
 }
