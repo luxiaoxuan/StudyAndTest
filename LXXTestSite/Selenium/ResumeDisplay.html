@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Resume Display</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="../Content/bootstrap-theme.min.css" />
+    <script type="text/javascript" src="../Scripts/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="../Scripts/bootstrap.min.js"></script>
+
+    <style type="text/css">
+        body {
+            font-family: HGGyoshotai;
+            font-size: 2em;
+            margin: 20px auto;
+            width: 60%;
+        }
+
+        table td:nth-child(2n+1) {
+            color: gray;
+        }
+    </style>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#spName").text(localStorage.getItem("name"));
+            $("#spSex").text(localStorage.getItem("sex") == "male" ? "男" : "女");
+            $("#spIsMarried").text(localStorage.getItem("isMarried") == "true" ? "既婚" : "未婚");
+            $("#spHometown").text(localStorage.getItem("hometown"));
+            $("#spMailAddress").text(localStorage.getItem("mailAddress"));
+            $("#pSelfIntro").text(localStorage.getItem("selfIntro"));
+
+            localStorage.removeItem("name");
+            localStorage.removeItem("sex");
+            localStorage.removeItem("isMarried");
+            localStorage.removeItem("hometown");
+            localStorage.removeItem("mailAddress");
+            localStorage.removeItem("selfIntro");
+        });
+    </script>
+</head>
+<body>
+    <table class="table">
+        <caption class="h1 text-center">履歴書</caption>
+        <tbody>
+            <tr>
+                <td class="col-xs-1">氏名</td>
+                <td class="col-xs-2">
+                    <span id="spName"></span>
+                </td>
+                <td class="col-xs-1">性別</td>
+                <td class="col-xs-2">
+                    <span id="spSex"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>婚姻状況</td>
+                <td>
+                    <span id="spIsMarried"></span>
+                </td>
+                <td>出身地</td>
+                <td>
+                    <span id="spHometown"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td colspan="3">
+                    <span id="spMailAddress"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>自己紹介</td>
+                <td colspan="3">
+                    <p id="pSelfIntro"></p>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
