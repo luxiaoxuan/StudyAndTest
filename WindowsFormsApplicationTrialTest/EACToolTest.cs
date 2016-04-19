@@ -1,18 +1,50 @@
 ﻿using LXXCommon;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Forms;
 
 namespace WindowsFormsApplicationTrialTest
 {
     [TestClass]
-    public class UnitTest1
+    public class EACToolTest
     {
+        private Process _smartApplicationProcess;
+
+        [TestInitialize]
+        public void StartSmartApplication()
+        {
+            foreach (var p in Process.GetProcessesByName("SmartApplication"))
+            {
+                p.Kill();
+            }
+
+            var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\SmartApplication");
+            var path = Path.Combine(key.GetValue("installDir").ToString(), "SmartApplication.exe");
+            
+            this._smartApplicationProcess = Process.Start(path);
+            while (this._smartApplicationProcess.MainWindowHandle == IntPtr.Zero)
+            {
+                Thread.Sleep(500);
+            }
+        }
+
+        [TestCleanup]
+        public void CloseSmartApplication()
+        {
+            foreach (var p in Process.GetProcessesByName("SmartApplication"))
+            {
+                p.Kill();
+            }
+        }
+
+
         [TestMethod]
         public void TestMethod1()
         {
@@ -79,17 +111,15 @@ namespace WindowsFormsApplicationTrialTest
         }
 
         [TestMethod]
-        public void TestMethod2()
+        public void TakeScreenShots()
         {
             InvokePattern ip;
             ValuePattern vp;
             ScrollPattern scp;
             SelectionItemPattern sp;
-            TextPattern tp;
             TogglePattern tgp;
 
-            var p = Process.GetProcessesByName("SmartApplication").FirstOrDefault();
-            var formMenu = AutomationElement.FromHandle(p.MainWindowHandle);
+            var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
 
             var btnApplication = formMenu.FindFirst(TreeScope.Descendants, new AndCondition(
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
@@ -138,18 +168,22 @@ namespace WindowsFormsApplicationTrialTest
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "tabPage3"));
             scp = tabPage3.GetCurrentPattern(ScrollPattern.Pattern) as ScrollPattern;
 
+            Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeDecrement);
+            Thread.Sleep(1000);
             var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             var bmp = ScreenCapturer.CaptureForegroundWindow();
             bmp.Save(Path.Combine(desktopPath, "001.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
+            Thread.Sleep(1000);
             bmp = ScreenCapturer.CaptureForegroundWindow();
             bmp.Save(Path.Combine(desktopPath, "002.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
+            Thread.Sleep(1000);
             bmp = ScreenCapturer.CaptureForegroundWindow();
             bmp.Save(Path.Combine(desktopPath, "003.bmp"));
 
@@ -159,17 +193,15 @@ namespace WindowsFormsApplicationTrialTest
         }
 
         [TestMethod]
-        public void TestMethod3()
+        public void PrintPDF()
         {
             AutomationElement e;
             InvokePattern ip;
             ValuePattern vp;
             SelectionItemPattern sp;
-            //TextPattern tp;
             TogglePattern tgp;
 
-            var p = Process.GetProcessesByName("SmartApplication").FirstOrDefault();
-            var formMenu = AutomationElement.FromHandle(p.MainWindowHandle);
+            var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
 
             e = formMenu.FindFirst(TreeScope.Descendants, new AndCondition(
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
@@ -219,10 +251,12 @@ namespace WindowsFormsApplicationTrialTest
             ip = e.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
             ip.Invoke();
 
+            Thread.Sleep(2000);
             e = AutomationElement.FocusedElement;
             ip = e.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
             ip.Invoke();
 
+            Thread.Sleep(2000);
             var formAgree = GetWindow(AutomationElement.FocusedElement);
             e = formAgree.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "chkAgree"));
@@ -234,6 +268,7 @@ namespace WindowsFormsApplicationTrialTest
             ip = e.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
             ip.Invoke();
 
+            Thread.Sleep(2000);
             e = AutomationElement.FocusedElement;
             vp = e.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue(DateTime.Now.ToString("yyyyMMdd-HHmmss"));
@@ -245,6 +280,7 @@ namespace WindowsFormsApplicationTrialTest
             ip = e.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
             ip.Invoke();
 
+            Thread.Sleep(2000);
             //Assert.AreEqual(btnPrint.Current.IsEnabled, false);
         }
 
@@ -266,6 +302,50 @@ namespace WindowsFormsApplicationTrialTest
         private void HandleTextChange(object sender, AutomationEventArgs e)
         {
             Debug.WriteLine((sender as AutomationElement).Current.AutomationId);
+        }
+
+
+
+        Func<int, int, int> Add;
+
+        private void Rai(Func<int, int, int> add)
+        {
+            this.Add = add;
+        }
+
+        private void Cnc(string id)
+        {
+            this.Rai((a, b) => { return a /2 + b / 2; });
+
+            this.GetData(string.Format("SELECT NAME FROM TABLE WHERE ID = '{0}'", id),
+                name => MessageBox.Show("Name is '" + name + "' for id<" + id + ">!"));
+
+            this.GetNameAsync("001",
+                name => MessageBox.Show("Name is '" + name + "' for id<" + id + ">!"));
+            MessageBox.Show("Ahahaha");
+        }
+
+        private void GetData(string sql, Action<string> callback)
+        {
+            var result = "";//execute "sql" and return "result"
+
+            callback(result);
+        }
+
+        private Task<string> GetName(string sql)
+        {
+            return Task.Run<string>(() => {
+                Thread.Sleep(5000);
+                var flg = sql.Contains("Rai");
+                return "Rai<" + flg + ">";
+            });
+        }
+
+        private async void GetNameAsync(string id, Action<string> callback)
+        {
+            var name = await this.GetName(string.Format("SELECT NAME FROM TABLE WHERE ID = '{0}'", id));
+
+            callback(name);
         }
     }
 }
