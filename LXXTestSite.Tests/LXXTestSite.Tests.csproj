@@ -75,6 +75,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="TestData\input-self-info_001.json" />
+    <None Include="TestData\input-self-info_002.json" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\packages\Selenium.WebDriver.ChromeDriver.2.21.0.0\driver\chromedriver.exe">

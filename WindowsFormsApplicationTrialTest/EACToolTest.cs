@@ -1,4 +1,5 @@
 ﻿using LXXCommon;
+using Microsoft.Test.Input;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Win32;
 using System;
@@ -46,13 +47,12 @@ namespace WindowsFormsApplicationTrialTest
 
 
         [TestMethod]
-        public void TestMethod1()
+        public void InputUserSetting()
         {
             InvokePattern ip;
             ValuePattern vp;
 
-            var p = Process.GetProcessesByName("SmartApplication").FirstOrDefault();
-            var formMenu = AutomationElement.FromHandle(p.MainWindowHandle);
+            var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
 
             var btnUserSetting = formMenu.FindFirst(TreeScope.Descendants, new AndCondition(
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
@@ -85,18 +85,35 @@ namespace WindowsFormsApplicationTrialTest
 
             var txtName = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "txtName"));
-            vp = txtName.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
-            vp.SetValue("何じゃら日本語");
-
-            var errTitle = formUserSetting.FindFirst(TreeScope.Descendants,
-                new PropertyCondition(AutomationElement.AutomationIdProperty, "errTitle"));
+            Clipboard.SetText("これがクリップボードからの内容だよ！");
+            txtName.SetFocus();
+            SendKeys.SendWait("+{F10}");
+            Thread.Sleep(1000);
+            
+            var contextMenu = AutomationElement.RootElement.FindFirst(TreeScope.Children,
+                new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Menu));
+            var contextMenuItems = contextMenu.FindAll(TreeScope.Descendants,
+                new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.MenuItem));
+            foreach (AutomationElement r in contextMenuItems)
+            {
+                try
+                {
+                    if (r.Current.Name == "貼り付け(P)")
+                    {
+                        var rect = r.Current.BoundingRectangle;
+                        var point = new System.Windows.Point(rect.Left / 2 + rect.Right / 2, rect.Top / 2 + rect.Bottom / 2);
+                        Mouse.MoveTo(new System.Drawing.Point((int)point.X, (int)point.Y));
+                        Mouse.Click(MouseButton.Left);
+                    }
+                }
+                catch (Exception e)
+                {
+                    Trace.WriteLine("rai:" + e.StackTrace);
+                }
+            }
 
             var txtCompany = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Document));
-            //var tp = txtCompany.GetCurrentPattern(TextPattern.Pattern) as TextPattern;
-            //var a1 = tp.DocumentRange.GetAttributeValue(TextPattern.BackgroundColorAttribute).ToString();
-            //var a2 = tp.DocumentRange.GetAttributeValue(TextPattern.FontNameAttribute).ToString();
-            //var a3 = tp.DocumentRange.GetAttributeValue(TextPattern.ForegroundColorAttribute).ToString();
             txtCompany.SetFocus();
             SendKeys.SendWait("何じゃら日本語");
 
@@ -108,6 +125,8 @@ namespace WindowsFormsApplicationTrialTest
 
             Assert.AreEqual(btnSave.Current.IsEnabled, false);
             Assert.AreEqual(btnCancel.Current.IsEnabled, true);
+
+            Thread.Sleep(3000);
         }
 
         [TestMethod]
