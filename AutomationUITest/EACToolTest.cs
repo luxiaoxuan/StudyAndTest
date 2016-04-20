@@ -5,13 +5,12 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Automation;
 using System.Windows.Forms;
 
-namespace WindowsFormsApplicationTrialTest
+namespace AutomationUITest
 {
     [TestClass]
     public class EACToolTest
