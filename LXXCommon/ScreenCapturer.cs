@@ -6,64 +6,60 @@ using System.Management;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Automation;
 using System.Windows.Forms;
 
 namespace LXXCommon
 {
     public class ScreenCapturer
     {
-        [DllImport("user32.dll")]
-        [return: MarshalAs(UnmanagedType.Bool)]
-        private static extern bool GetWindowRect(IntPtr hWnd, ref RECT lpRect);
+        //[DllImport("user32.dll")]
+        //[return: MarshalAs(UnmanagedType.Bool)]
+        //private static extern bool GetWindowRect(IntPtr hWnd, ref RECT lpRect);
 
         [DllImport("user32.dll", CharSet = CharSet.Auto, ExactSpelling = true)]
         private static extern IntPtr GetForegroundWindow();
 
-        [StructLayout(LayoutKind.Sequential)]
-        private struct RECT
-        {
-            public int Left;
-            public int Top;
-            public int Right;
-            public int Bottom;
-        }
+        //[StructLayout(LayoutKind.Sequential)]
+        //private struct RECT
+        //{
+        //    public int Left;
+        //    public int Top;
+        //    public int Right;
+        //    public int Bottom;
+        //}
 
 
         public static Bitmap CaptureForegroundWindow()
         {
+            //int dpiX;
+
             var window = GetForegroundWindow();
-            var rect = new RECT();
-            GetWindowRect(window, ref rect);
-            var width = rect.Right - rect.Left;
-            var height = rect.Bottom - rect.Top;
-            var x = rect.Left;
-            var y = rect.Top;
+
+            //var rect = new RECT();
+            //GetWindowRect(window, ref rect);
+            //var width = rect.Right - rect.Left;
+            //var height = rect.Bottom - rect.Top;
+            //var x = rect.Left;
+            //var y = rect.Top;
+
+            var ae = AutomationElement.FromHandle(window);
+            var rect2 = ae.Current.BoundingRectangle;
+            var width2 = rect2.Right - rect2.Left;
+            var height2 = rect2.Bottom - rect2.Top;
+            var x2 = rect2.Left;
+            var y2 = rect2.Top;
 
             //using (var mc = new ManagementClass("Win32_DesktopMonitor"))
             //{
             //    foreach (ManagementObject each in mc.GetInstances())
             //    {
-            //        var dpiX = float.Parse((each.Properties["PixelsPerXLogicalInch"].Value.ToString()));
-            //        var dpiY = float.Parse((each.Properties["PixelsPerYLogicalInch"].Value.ToString()));
-
-            //        x = (int)(dpiX / 96f * x);
-            //        y = (int)(dpiY / 96f * y);
-            //        width = (int)(dpiX / 96f * width);
-            //        height = (int)(dpiY / 96f * height);
+            //        dpiX = int.Parse((each.Properties["PixelsPerXLogicalInch"].Value.ToString()));
 
             //        break;
             //    }
             //}
-
-            //using (var graphics = Graphics.FromHwnd(IntPtr.Zero))
-            //{
-            //    x = (int)(graphics.DpiX / 96f * x);
-            //    y = (int)(graphics.DpiY / 96f * y);
-            //    width = (int)(graphics.DpiX / 96f * width);
-            //    height = (int)(graphics.DpiY / 96f * height);
-            //}
-
-            return CaptureScreen(x, y, width, height);
+            return CaptureScreen((int)x2, (int)y2, (int)width2, (int)height2);
         }
 
         public static Bitmap CaptureScreen()

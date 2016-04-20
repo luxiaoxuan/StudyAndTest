@@ -325,6 +325,8 @@ namespace WindowsFormsApplicationTrialTest
 
 
 
+        #region ドラフト
+
         Func<int, int, int> Add;
 
         private void Rai(Func<int, int, int> add)
@@ -366,5 +368,7 @@ namespace WindowsFormsApplicationTrialTest
 
             callback(name);
         }
+
+        #endregion
     }
 }
