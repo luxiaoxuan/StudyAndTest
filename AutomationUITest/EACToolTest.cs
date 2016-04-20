@@ -186,24 +186,26 @@ namespace AutomationUITest
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "tabPage3"));
             scp = tabPage3.GetCurrentPattern(ScrollPattern.Pattern) as ScrollPattern;
 
+            var timeStamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ApplicationTest");
+
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeDecrement);
             Thread.Sleep(1000);
-            var desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             var bmp = ScreenCapturer.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(desktopPath, "001.bmp"));
+            bmp.Save(Path.Combine(path, timeStamp + "_001.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
             bmp = ScreenCapturer.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(desktopPath, "002.bmp"));
+            bmp.Save(Path.Combine(path, timeStamp + "_002.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
             bmp = ScreenCapturer.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(desktopPath, "003.bmp"));
+            bmp.Save(Path.Combine(path, timeStamp + "_003.bmp"));
 
             var btnPrint = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnPrint"));
