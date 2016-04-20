@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ResumeInfo.cs" />
+    <Compile Include="ResumeInputPage.cs" />
     <Compile Include="SeleniumTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -5,6 +5,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.IE;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.Events;
+using OpenQA.Selenium.Support.PageObjects;
 using System;
 using System.Diagnostics;
 using System.Drawing.Imaging;
@@ -40,6 +41,15 @@ namespace LXXTestSite.Tests
         }
 
 
+        [TestCleanup]
+        public void QuitWebDriver()
+        {
+            if (this._webDriver != null)
+            {
+                this._webDriver.Quit();
+            }
+        }
+
         [TestMethod]
         public void SearchAnimePicsFromYahoo()
         {
@@ -67,13 +77,10 @@ namespace LXXTestSite.Tests
         [TestMethod]
         public void InputForm()
         {
-            var inputFilePath = @"..\..\TestData\input-self-info_001.json";
-
             this.WebDriver = new ChromeDriver();
 
-            this.InputForm(inputFilePath);
+            this.InputForm(@"..\..\TestData\input-self-info_001.json");
         }
-
 
         public void InputForm(string inputFilePath)
         {
@@ -86,40 +93,17 @@ namespace LXXTestSite.Tests
                 Trace.WriteLine(e.Element.TagName + "'s value has been changed to ':" + e.Element.GetAttribute("value") + "'.");
             };
 
-            fDriver.Navigate().GoToUrl("http://localhost:49459/Selenium/ResumeInput.html");
+            PageFactory.InitElements<ResumeInputPage>(fDriver).InputResume(data);
 
-            var inputWindow = fDriver.CurrentWindowHandle;
-            Trace.WriteLine("current window:" + inputWindow);
-
-            fDriver.FindElement(By.Id("txtName")).SendKeys(data.Name);
-            fDriver.FindElements(By.Name("rdSex")).First(e => e.GetAttribute("value") == data.Sex).Click();
-            if (data.IsMarried)
-            {
-                fDriver.FindElement(By.Id("lblMarried")).Click();
-            }
-            fDriver.FindElement(By.Id("ddlRegion"))
-                .FindElements(By.XPath(@"//option"))
-                .First(e => e.Text == data.Hometown).Click();
-            fDriver.FindElement(By.Id("txtMail")).SendKeys(data.MailAddress);
-            fDriver.FindElement(By.Id("txtSelfIntro")).SendKeys(data.SelfIntro);
-
-            //fDriver.ExecuteScript("alert('Go!');");
-            //Thread.Sleep(2000);
-            //fDriver.SwitchTo().Alert().Accept();
-
-            fDriver.FindElement(By.Id("btnSubmit")).Click();
-            Thread.Sleep(2000);
-            fDriver.SwitchTo().Alert().Accept();
-
+            Thread.Sleep(1000);
             foreach (var w in fDriver.WindowHandles)
             {
-                if (w != inputWindow)
+                if (w != fDriver.CurrentWindowHandle)
                 {
                     fDriver.SwitchTo().Window(w);
                     break;
                 }
             }
-            //Trace.WriteLine("current window:" + fDriver.CurrentWindowHandle);
 
             var timeStamp = DateTime.Now.ToString("yyyyMMdd-HHmmss");
 
