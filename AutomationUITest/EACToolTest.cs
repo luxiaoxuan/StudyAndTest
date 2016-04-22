@@ -1,9 +1,9 @@
 ﻿using LXXCommon;
-using Microsoft.Test.Input;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.Win32;
 using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -17,17 +17,25 @@ namespace AutomationUITest
     {
         private Process _smartApplicationProcess;
 
+
         [TestInitialize]
         public void StartSmartApplication()
         {
-            foreach (var p in Process.GetProcessesByName("SmartApplication"))
+            try
             {
-                p.Kill();
+                foreach (var p in Process.GetProcessesByName("SmartApplication"))
+                {
+                    p.Kill();
+
+                }
             }
+            catch { }
+
+            Trace.WriteLine("screen dpi:" + DisplayUtility.GetScalingFactor());
 
             var key = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\SmartApplication");
             var path = Path.Combine(key.GetValue("installDir").ToString(), "SmartApplication.exe");
-            
+
             this._smartApplicationProcess = Process.Start(path);
             while (this._smartApplicationProcess.MainWindowHandle == IntPtr.Zero)
             {
@@ -38,16 +46,22 @@ namespace AutomationUITest
         [TestCleanup]
         public void CloseSmartApplication()
         {
-            foreach (var p in Process.GetProcessesByName("SmartApplication"))
+            try
             {
-                p.Kill();
+                foreach (var p in Process.GetProcessesByName("SmartApplication"))
+                {
+                    p.Kill();
+
+                }
             }
+            catch { }
         }
 
 
         [TestMethod]
         public void InputUserSetting()
         {
+            System.Windows.Rect rect;
             InvokePattern ip;
             ValuePattern vp;
 
@@ -85,10 +99,22 @@ namespace AutomationUITest
             var txtName = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "txtName"));
             Clipboard.SetText("これがクリップボードからの内容だよ！");
-            txtName.SetFocus();
-            SendKeys.SendWait("+{F10}");
-            Thread.Sleep(1000);
-            
+            #region テキストボックスのコンテキストメニューを開く
+            #region 方法Ⅰ：テキストボックスにフォーカスを入れて「Shift」+「F10」キーを押す
+            //txtName.SetFocus();
+            //SendKeys.SendWait("+{F10}");
+            //Thread.Sleep(500);
+            #endregion
+            #region 方法Ⅰ：マウスをテキストボックスに移動して右クリックする
+            rect = txtName.Current.BoundingRectangle;
+            Mouse.MoveTo(new Point(
+                (int)((rect.Left + rect.Right) / 2),
+                (int)((rect.Top + rect.Bottom) / 2)));
+            Mouse.RightClick();
+            Thread.Sleep(500);
+            #endregion
+            #endregion
+
             var contextMenu = AutomationElement.RootElement.FindFirst(TreeScope.Children,
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Menu));
             var contextMenuItems = contextMenu.FindAll(TreeScope.Descendants,
@@ -99,10 +125,14 @@ namespace AutomationUITest
                 {
                     if (r.Current.Name == "貼り付け(P)")
                     {
-                        var rect = r.Current.BoundingRectangle;
-                        var point = new System.Windows.Point(rect.Left / 2 + rect.Right / 2, rect.Top / 2 + rect.Bottom / 2);
-                        Mouse.MoveTo(new System.Drawing.Point((int)point.X, (int)point.Y));
-                        Mouse.Click(MouseButton.Left);
+                        rect = r.Current.BoundingRectangle;
+                        Mouse.MoveTo(new Point(
+                            (int)((rect.Left + rect.Right) / 2),
+                            (int)((rect.Top + rect.Bottom) / 2)));
+                        Thread.Sleep(500);
+                        Mouse.LeftClick();
+
+                        break;
                     }
                 }
                 catch (Exception e)
@@ -116,6 +146,16 @@ namespace AutomationUITest
             txtCompany.SetFocus();
             SendKeys.SendWait("何じゃら日本語");
 
+            #region 色取得試し
+            rect = txtTitle.Current.BoundingRectangle;
+            var point = new Point(
+                (int)((rect.Left + rect.Right) / 2),
+                (int)((rect.Top + rect.Bottom) / 2));
+            Thread.Sleep(500);
+            var color = DisplayUtility.GetScreenPixelColor(IntPtr.Zero, point);
+            Trace.WriteLine("Color:" + color.Name);
+            #endregion
+
             var btnSave = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnSave"));
             var btnCancel = formUserSetting.FindFirst(TreeScope.Descendants,
@@ -125,7 +165,7 @@ namespace AutomationUITest
             Assert.AreEqual(btnSave.Current.IsEnabled, false);
             Assert.AreEqual(btnCancel.Current.IsEnabled, true);
 
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
         }
 
         [TestMethod]
@@ -172,7 +212,7 @@ namespace AutomationUITest
             sp = item.GetCurrentPattern(SelectionItemPattern.Pattern) as SelectionItemPattern;
             sp.Select();
 
-            var chkInstructions1 = form.FindFirst(TreeScope.Descendants, 
+            var chkInstructions1 = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "chkInstructions1"));
             tgp = chkInstructions1.GetCurrentPattern(TogglePattern.Pattern) as TogglePattern;
             tgp.Toggle();
@@ -192,19 +232,19 @@ namespace AutomationUITest
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeDecrement);
             Thread.Sleep(1000);
-            var bmp = ScreenCapturer.CaptureForegroundWindow();
+            var bmp = DisplayUtility.CaptureForegroundWindow();
             bmp.Save(Path.Combine(path, timeStamp + "_001.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
-            bmp = ScreenCapturer.CaptureForegroundWindow();
+            bmp = DisplayUtility.CaptureForegroundWindow();
             bmp.Save(Path.Combine(path, timeStamp + "_002.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
-            bmp = ScreenCapturer.CaptureForegroundWindow();
+            bmp = DisplayUtility.CaptureForegroundWindow();
             bmp.Save(Path.Combine(path, timeStamp + "_003.bmp"));
 
             var btnPrint = form.FindFirst(TreeScope.Descendants,
@@ -290,10 +330,21 @@ namespace AutomationUITest
 
             Thread.Sleep(2000);
             e = AutomationElement.FocusedElement;
-            vp = e.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
-            vp.SetValue(DateTime.Now.ToString("yyyyMMdd-HHmmss"));
-
             var dialog = GetWindow(e);
+            vp = e.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
+            // way 1
+            //vp.SetValue(@"C:\Users\u851299\Desktop\ApplicationTest\" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+
+            // way 2
+            vp.SetValue(DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+            var bar = dialog.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.ClassNameProperty, "ReBarWindow32"));
+            e = bar.FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.NameProperty, "前の場所"));
+            ip = e.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
+            ip.Invoke();
+            SendKeys.SendWait(@"C:\Users\u851299\Desktop\ApplicationTest\");
+            SendKeys.SendWait("{enter}");
+            //Thread.Sleep(3000);
+
             e = dialog.FindFirst(TreeScope.Descendants, new AndCondition(
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
                 new PropertyCondition(AutomationElement.NameProperty, "保存(S)")));
@@ -337,7 +388,7 @@ namespace AutomationUITest
 
         private void Cnc(string id)
         {
-            this.Rai((a, b) => { return a /2 + b / 2; });
+            this.Rai((a, b) => { return a / 2 + b / 2; });
 
             this.GetData(string.Format("SELECT NAME FROM TABLE WHERE ID = '{0}'", id),
                 name => MessageBox.Show("Name is '" + name + "' for id<" + id + ">!"));
@@ -356,7 +407,8 @@ namespace AutomationUITest
 
         private Task<string> GetName(string sql)
         {
-            return Task.Run<string>(() => {
+            return Task.Run<string>(() =>
+            {
                 Thread.Sleep(5000);
                 var flg = sql.Contains("Rai");
                 return "Rai<" + flg + ">";

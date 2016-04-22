@@ -123,6 +123,8 @@ namespace LXXTestSite.Tests
             sb.Append("2行目4列目セルの値： ").AppendLine(tbl.FindElements(By.TagName("tr")).ToArray()[1].FindElements(By.TagName("td")).ToArray()[3].Text);
             File.AppendAllText(Path.Combine(path, string.Format(@"result_{0}.txt", timeStamp)), sb.ToString());
 
+            Assert.Equals("aaa", tbl);
+
             fDriver.Quit();
         }
     }

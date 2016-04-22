@@ -15,7 +15,7 @@ namespace ExcelOperationStudy
     {
         public static void DoSomething1()
         {
-            var bmp = ScreenCapturer.CaptureScreen();
+            var bmp = DisplayUtility.CaptureScreen();
             Clipboard.SetImage(bmp);
 
             var wb = new Excel.Application().Workbooks.Open(@"C:\Users\u851299\Desktop\Test\TotalReport.xlsm");
