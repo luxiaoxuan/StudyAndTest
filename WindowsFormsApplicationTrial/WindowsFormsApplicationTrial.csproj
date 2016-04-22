@@ -69,11 +69,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form.cs">
+    <Compile Include="ColorTestForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form.Designer.cs">
-      <DependentUpon>Form.cs</DependentUpon>
+    <Compile Include="ColorTestForm.Designer.cs">
+      <DependentUpon>ColorTestForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaunchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaunchForm.Designer.cs">
+      <DependentUpon>LaunchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDpiPixel.cs">
       <SubType>Form</SubType>
@@ -113,8 +119,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form.resx">
-      <DependentUpon>Form.cs</DependentUpon>
+    <EmbeddedResource Include="ColorTestForm.resx">
+      <DependentUpon>ColorTestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LaunchForm.resx">
+      <DependentUpon>LaunchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDpiPixel.resx">
       <DependentUpon>FormDpiPixel.cs</DependentUpon>
@@ -166,6 +175,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LXXCommon\LXXCommon.csproj">
+      <Project>{4a1edf8a-5f73-4a39-a48b-fd8b5b429b33}</Project>
+      <Name>LXXCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplicationTrial
 {
-    partial class Form
+    partial class LaunchForm
     {
         /// <summary>
         /// 必要なデザイナー変数です。

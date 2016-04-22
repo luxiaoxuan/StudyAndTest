@@ -64,6 +64,7 @@ namespace AutomationUITest
             System.Windows.Rect rect;
             InvokePattern ip;
             ValuePattern vp;
+            TextPattern tp;
 
             var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
 
@@ -146,7 +147,7 @@ namespace AutomationUITest
             txtCompany.SetFocus();
             SendKeys.SendWait("何じゃら日本語");
 
-            #region 色取得試し
+            #region 色取得
             rect = txtTitle.Current.BoundingRectangle;
             var point = new Point(
                 (int)((rect.Left + rect.Right) / 2),
@@ -154,6 +155,20 @@ namespace AutomationUITest
             Thread.Sleep(500);
             var color = DisplayUtility.GetScreenPixelColor(IntPtr.Zero, point);
             Trace.WriteLine("Color:" + color.Name);
+            #endregion
+
+            #region フォント取得
+            tp = txtTitle.GetCurrentPattern(TextPattern.Pattern) as TextPattern;
+            Trace.WriteLine("FontNameAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontNameAttribute).ToString());
+            Trace.WriteLine("FontSizeAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontSizeAttribute).ToString());
+            Trace.WriteLine("FontWeightAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontWeightAttribute).ToString());
+            var foregroundColorAttribute = DisplayUtility.ConvertInt2Color(
+                (int)tp.DocumentRange.GetAttributeValue(TextPattern.ForegroundColorAttribute));
+            Trace.WriteLine("ForegroundColorAttribute:" + foregroundColorAttribute.Name);
+            //var backgroundColorAttribute = DisplayUtility.ConvertInt2Color(
+            //    (int)tp.DocumentRange.GetAttributeValue(TextPattern.BackgroundColorAttribute));
+            //Trace.WriteLine("BackgroundColorAttribute:" + backgroundColorAttribute.Name);
+            Trace.WriteLine(DisplayUtility.GetBackgroundColor((IntPtr)txtTitle.Current.NativeWindowHandle).ToString());
             #endregion
 
             var btnSave = formUserSetting.FindFirst(TreeScope.Descendants,

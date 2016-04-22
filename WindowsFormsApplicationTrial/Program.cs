@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 //using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,12 +26,12 @@ namespace WindowsFormsApplicationTrial
                 dpiX = graphics.DpiX;
                 dpiY = graphics.DpiY;
             }
-            MessageBox.Show(string.Format("DpiX: {0}\r\nDpiY: {1}", dpiX, dpiY));
+            //MessageBox.Show(string.Format("DpiX: {0}\r\nDpiY: {1}", dpiX, dpiY));
 
-            Application.Run(new Form());
+            Application.Run(new ColorTestForm());
         }
 
-        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        [DllImport("user32.dll")]
         public extern static IntPtr SetProcessDPIAware();
     }
 }
