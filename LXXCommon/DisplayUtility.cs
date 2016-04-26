@@ -30,6 +30,24 @@ namespace LXXCommon
         private static extern int SetTextColor(IntPtr hdc, int crColor);
 
 
+        public static Bitmap CaptureControl(AutomationElement ae)
+        {
+            var rect = ae.Current.BoundingRectangle;
+            var width = rect.Right - rect.Left;
+            var height = rect.Bottom - rect.Top;
+            var x = rect.Left;
+            var y = rect.Top;
+
+            return CaptureScreen((int)x, (int)y, (int)width, (int)height);
+        }
+
+        public static Bitmap CaptureControl(IntPtr hwnd)
+        {
+            var ae = AutomationElement.FromHandle(hwnd);
+            
+            return CaptureControl(ae);
+        }
+
         public static Bitmap CaptureForegroundWindow()
         {
             var window = GetForegroundWindow();
@@ -41,15 +59,6 @@ namespace LXXCommon
             var x = rect.Left;
             var y = rect.Top;
 
-            //using (var mc = new ManagementClass("Win32_DesktopMonitor"))
-            //{
-            //    foreach (ManagementObject each in mc.GetInstances())
-            //    {
-            //        dpiX = int.Parse((each.Properties["PixelsPerXLogicalInch"].Value.ToString()));
-
-            //        break;
-            //    }
-            //}
             return CaptureScreen((int)x, (int)y, (int)width, (int)height);
         }
 
@@ -57,22 +66,6 @@ namespace LXXCommon
         {
             Size screenSize = Screen.PrimaryScreen.Bounds.Size;
             return CaptureScreen(0, 0, screenSize.Width, screenSize.Height);
-        }
-
-        public static Color ConvertInt2Color(int color)
-        {
-            var r = (byte)color;
-            var g = (byte)(color >> 8);
-            var b = (byte)(color >> 16);
-
-#if DEBUG
-            System.Diagnostics.Trace.WriteLine("Color:" + color);
-            System.Diagnostics.Trace.WriteLine("R:" + r);
-            System.Diagnostics.Trace.WriteLine("G:" + g);
-            System.Diagnostics.Trace.WriteLine("B:" + b);
-#endif
-
-            return Color.FromArgb(r, g, b);
         }
 
         public static int GetBackgroundColor(IntPtr hwnd)
@@ -95,7 +88,7 @@ namespace LXXCommon
             {
                 var color = GetPixel(graphics.GetHdc(), p);
 
-                return ConvertInt2Color(color);
+                return ColorTranslator.FromWin32(color);
             }
         }
 
@@ -113,11 +106,11 @@ namespace LXXCommon
             return physicalScreenHeight / logicalScreenHeight;
         }
 
-        public static void SetTextForeColor(IntPtr hwnd, Color color)
+        public static int SetTextForeColor(IntPtr hwnd, Color color)
         {
             var hdc = GetDC(hwnd);
 
-            SetTextColor(hdc, ColorTranslator.ToWin32(color));
+            return SetTextColor(hdc, ColorTranslator.ToWin32(color));
         }
 
 
@@ -129,23 +122,6 @@ namespace LXXCommon
                 g.CopyFromScreen(new Point(x, y), new Point(0, 0), bmp.Size);
             }
             return bmp;
-        }
-
-
-        /// <summary>
-        /// Intended for White Internal use only
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        public struct COLORREF
-        {
-            public byte R;
-            public byte G;
-            public byte B;
-
-            public override string ToString()
-            {
-                return string.Format("R={0},G={1},B={2}", R, G, B);
-            }
         }
     }
 }

@@ -4,6 +4,7 @@ using Microsoft.Win32;
 using System;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
@@ -59,12 +60,17 @@ namespace AutomationUITest
 
 
         [TestMethod]
+        [TestCategory("ContextMenu")]
+        [TestCategory("Font")]
+        [TestCategory("ControlScreenShot")]
         public void InputUserSetting()
         {
             System.Windows.Rect rect;
             InvokePattern ip;
             ValuePattern vp;
             TextPattern tp;
+
+            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ApplicationTest");
 
             var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
 
@@ -162,20 +168,18 @@ namespace AutomationUITest
             Trace.WriteLine("FontNameAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontNameAttribute).ToString());
             Trace.WriteLine("FontSizeAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontSizeAttribute).ToString());
             Trace.WriteLine("FontWeightAttribute:" + tp.DocumentRange.GetAttributeValue(TextPattern.FontWeightAttribute).ToString());
-            var foregroundColorAttribute = DisplayUtility.ConvertInt2Color(
-                (int)tp.DocumentRange.GetAttributeValue(TextPattern.ForegroundColorAttribute));
-            Trace.WriteLine("ForegroundColorAttribute:" + foregroundColorAttribute.Name);
-            //var backgroundColorAttribute = DisplayUtility.ConvertInt2Color(
-            //    (int)tp.DocumentRange.GetAttributeValue(TextPattern.BackgroundColorAttribute));
-            //Trace.WriteLine("BackgroundColorAttribute:" + backgroundColorAttribute.Name);
-            Trace.WriteLine(DisplayUtility.GetBackgroundColor((IntPtr)txtTitle.Current.NativeWindowHandle).ToString());
+            DisplayUtility.CaptureControl(txtTitle).Save(Path.Combine(path, "txtTitle.png"), ImageFormat.Png);
             #endregion
 
             var btnSave = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnSave"));
+            DisplayUtility.CaptureControl(btnSave).Save(Path.Combine(path, "btnSave.png"), ImageFormat.Png);
             var btnCancel = formUserSetting.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnCancel"));
-            btnCancel.SetFocus();
+            DisplayUtility.CaptureControl(btnCancel).Save(Path.Combine(path, "btnCancel.png"), ImageFormat.Png);
+            var errTitle = formUserSetting.FindFirst(TreeScope.Descendants,
+                new PropertyCondition(AutomationElement.AutomationIdProperty, "errTitle"));
+            DisplayUtility.CaptureControl(errTitle).Save(Path.Combine(path, "errTitle.png"), ImageFormat.Png);
 
             Assert.AreEqual(btnSave.Current.IsEnabled, false);
             Assert.AreEqual(btnCancel.Current.IsEnabled, true);
@@ -184,6 +188,8 @@ namespace AutomationUITest
         }
 
         [TestMethod]
+        [TestCategory("Scroll")]
+        [TestCategory("FormScreenShot")]
         public void TakeScreenShots()
         {
             InvokePattern ip;
@@ -247,20 +253,17 @@ namespace AutomationUITest
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeDecrement);
             Thread.Sleep(1000);
-            var bmp = DisplayUtility.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(path, timeStamp + "_001.bmp"));
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, timeStamp + "_001.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
-            bmp = DisplayUtility.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(path, timeStamp + "_002.bmp"));
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, timeStamp + "_002.bmp"));
 
             Thread.Sleep(1000);
             scp.ScrollVertical(ScrollAmount.LargeIncrement);
             Thread.Sleep(1000);
-            bmp = DisplayUtility.CaptureForegroundWindow();
-            bmp.Save(Path.Combine(path, timeStamp + "_003.bmp"));
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, timeStamp + "_003.bmp"));
 
             var btnPrint = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnPrint"));
@@ -268,6 +271,7 @@ namespace AutomationUITest
         }
 
         [TestMethod]
+        [TestCategory("WindowsStandardFileSaveDialog")]
         public void PrintPDF()
         {
             AutomationElement e;
