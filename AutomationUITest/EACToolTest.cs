@@ -70,22 +70,25 @@ namespace AutomationUITest
             ValuePattern vp;
             TextPattern tp;
 
-            var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ApplicationTest");
+            var path = Path.Combine(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "ApplicationTest"),
+                "ControlScreenShot_" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+            Directory.CreateDirectory(path);
 
-            var formMenu = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle);
-
-            var btnUserSetting = formMenu.FindFirst(TreeScope.Descendants, new AndCondition(
-                new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
-                new PropertyCondition(AutomationElement.NameProperty, "User Setting")));
+            var btnUserSetting = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle)
+                .FindFirst(TreeScope.Descendants, new AndCondition(
+                    new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
+                    new PropertyCondition(AutomationElement.NameProperty, "User Setting"))
+                );
             ip = btnUserSetting.GetCurrentPattern(InvokePattern.Pattern) as InvokePattern;
             ip.Invoke();
 
             var txtBD = AutomationElement.FocusedElement;
-            var formUserSetting = GetWindow(txtBD);
+            var form = GetWindow(txtBD);
 
             Automation.AddAutomationEventHandler(
                 TextPattern.TextChangedEvent,
-                formUserSetting,
+                form,
                 TreeScope.Descendants,
                 new AutomationEventHandler(HandleTextChange));
             //Automation.AddAutomationFocusChangedEventHandler(new AutomationFocusChangedEventHandler(HandleTextChange));
@@ -93,17 +96,17 @@ namespace AutomationUITest
             vp = txtBD.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue("何じゃら日本語");
 
-            var txtTelNo = formUserSetting.FindFirst(TreeScope.Descendants,
+            var txtTelNo = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "txtTelNo"));
             vp = txtTelNo.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue("何じゃら日本語");
 
-            var txtTitle = formUserSetting.FindFirst(TreeScope.Descendants,
+            var txtTitle = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "txtTitle"));
             vp = txtTitle.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue("何じゃら日本語");
 
-            var txtName = formUserSetting.FindFirst(TreeScope.Descendants,
+            var txtName = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "txtName"));
             Clipboard.SetText("これがクリップボードからの内容だよ！");
             #region テキストボックスのコンテキストメニューを開く
@@ -148,7 +151,7 @@ namespace AutomationUITest
                 }
             }
 
-            var txtCompany = formUserSetting.FindFirst(TreeScope.Descendants,
+            var txtCompany = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Document));
             txtCompany.SetFocus();
             SendKeys.SendWait("何じゃら日本語");
@@ -171,15 +174,46 @@ namespace AutomationUITest
             DisplayUtility.CaptureControl(txtTitle).Save(Path.Combine(path, "txtTitle.png"), ImageFormat.Png);
             #endregion
 
-            var btnSave = formUserSetting.FindFirst(TreeScope.Descendants,
+            txtBD.SetFocus();
+            Thread.Sleep(500);
+
+            var btnSave = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnSave"));
             DisplayUtility.CaptureControl(btnSave).Save(Path.Combine(path, "btnSave.png"), ImageFormat.Png);
-            var btnCancel = formUserSetting.FindFirst(TreeScope.Descendants,
+            var btnCancel = form.FindFirst(TreeScope.Descendants,
                 new PropertyCondition(AutomationElement.AutomationIdProperty, "btnCancel"));
             DisplayUtility.CaptureControl(btnCancel).Save(Path.Combine(path, "btnCancel.png"), ImageFormat.Png);
-            var errTitle = formUserSetting.FindFirst(TreeScope.Descendants,
-                new PropertyCondition(AutomationElement.AutomationIdProperty, "errTitle"));
-            DisplayUtility.CaptureControl(errTitle).Save(Path.Combine(path, "errTitle.png"), ImageFormat.Png);
+
+            #region コントロールのスクリーンキャプチャ
+
+            DisplayUtility.CaptureControl(txtBD).Save(Path.Combine(path, "txtBD.png"), ImageFormat.Png);
+            DisplayUtility.CaptureControl(txtCompany).Save(Path.Combine(path, "txtCompany.png"), ImageFormat.Png);
+            DisplayUtility.CaptureControl(txtName).Save(Path.Combine(path, "txtName.png"), ImageFormat.Png);
+            DisplayUtility.CaptureControl(txtTelNo).Save(Path.Combine(path, "txtTelNo.png"), ImageFormat.Png);
+            DisplayUtility.CaptureControl(txtTitle).Save(Path.Combine(path, "txtTitle.png"), ImageFormat.Png);
+
+            DisplayUtility
+                .CaptureControl(form
+                    .FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, "errBD")))
+                .Save(Path.Combine(path, "errBD.png"), ImageFormat.Png);
+            DisplayUtility
+                .CaptureControl(form
+                    .FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, "errCompany")))
+                .Save(Path.Combine(path, "errCompany.png"), ImageFormat.Png);
+            DisplayUtility
+                .CaptureControl(form
+                    .FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, "errName")))
+                .Save(Path.Combine(path, "errName.png"), ImageFormat.Png);
+            DisplayUtility
+                .CaptureControl(form
+                    .FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, "errTelNo")))
+                .Save(Path.Combine(path, "errTelNo.png"), ImageFormat.Png);
+            DisplayUtility
+                .CaptureControl(form
+                    .FindFirst(TreeScope.Descendants, new PropertyCondition(AutomationElement.AutomationIdProperty, "errTitle")))
+                .Save(Path.Combine(path, "errTitle.png"), ImageFormat.Png);
+
+            #endregion
 
             Assert.AreEqual(btnSave.Current.IsEnabled, false);
             Assert.AreEqual(btnCancel.Current.IsEnabled, true);

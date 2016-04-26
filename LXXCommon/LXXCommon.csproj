@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="DeviceCap.cs" />
     <Compile Include="DisplayUtility.cs" />
+    <Compile Include="ImageUtility.cs" />
     <Compile Include="Mouse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowsMessage.cs" />

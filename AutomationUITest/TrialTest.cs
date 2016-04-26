@@ -81,5 +81,16 @@ namespace AutomationUITest
             Thread.Sleep(500);
             DisplayUtility.CaptureControl(btn).Save(@"C:\Users\u851299\Desktop\bbb.bmp");
         }
+
+        [TestMethod]
+        public void TestCompareBitmap()
+        {
+            var bmp1 = new Bitmap(@"C:\Users\u851299\Desktop\ApplicationTest\ControlScreenShot_20160426-160032\errBD.png");
+            var bmp2 = new Bitmap(@"C:\Users\u851299\Desktop\ApplicationTest\ControlScreenShot_20160426-160032\errTelNo.png");
+
+            var result = ImageUtility.CompareBitmap(bmp1, bmp2);
+            Trace.WriteLine("Result:" + result);
+            Assert.IsTrue(result);
+        }
     }
 }
