@@ -62,7 +62,7 @@ namespace AutomationUITest
         [TestMethod]
         [TestCategory("ContextMenu")]
         [TestCategory("Font")]
-        [TestCategory("ControlScreenShot")]
+        [TestCategory("ScreenShot")]
         public void InputUserSetting()
         {
             System.Windows.Rect rect;
@@ -186,6 +186,8 @@ namespace AutomationUITest
 
             #region コントロールのスクリーンキャプチャ
 
+            DisplayUtility.CaptureControl(form).Save(Path.Combine(path, "userSettingForm.png"), ImageFormat.Png);
+
             DisplayUtility.CaptureControl(txtBD).Save(Path.Combine(path, "txtBD.png"), ImageFormat.Png);
             DisplayUtility.CaptureControl(txtCompany).Save(Path.Combine(path, "txtCompany.png"), ImageFormat.Png);
             DisplayUtility.CaptureControl(txtName).Save(Path.Combine(path, "txtName.png"), ImageFormat.Png);
@@ -223,7 +225,7 @@ namespace AutomationUITest
 
         [TestMethod]
         [TestCategory("Scroll")]
-        [TestCategory("FormScreenShot")]
+        [TestCategory("ScreenShot")]
         public void TakeScreenShots()
         {
             InvokePattern ip;
