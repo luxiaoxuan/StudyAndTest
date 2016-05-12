@@ -16,8 +16,8 @@ namespace PDFSharpTrialConsole
         static void Main(string[] args)
         {
             var pdfPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory), "aa.pdf");
-            //TryITextSharp(pdfPath);
-            TryPdfBox(pdfPath);
+            TryITextSharp(pdfPath);
+            //TryPdfBox(pdfPath);
         }
 
         private static void TryITextSharp(string pdfPath)

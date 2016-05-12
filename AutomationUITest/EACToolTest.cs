@@ -75,6 +75,7 @@ namespace AutomationUITest
                 "ControlScreenShot_" + DateTime.Now.ToString("yyyyMMdd-HHmmss"));
             Directory.CreateDirectory(path);
 
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, "01EACTool.png"), ImageFormat.Png);
             var btnUserSetting = AutomationElement.FromHandle(this._smartApplicationProcess.MainWindowHandle)
                 .FindFirst(TreeScope.Descendants, new AndCondition(
                     new PropertyCondition(AutomationElement.ControlTypeProperty, ControlType.Button),
@@ -93,6 +94,7 @@ namespace AutomationUITest
                 new AutomationEventHandler(HandleTextChange));
             //Automation.AddAutomationFocusChangedEventHandler(new AutomationFocusChangedEventHandler(HandleTextChange));
 
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, "02EACTool.png"), ImageFormat.Png);
             vp = txtBD.GetCurrentPattern(ValuePattern.Pattern) as ValuePattern;
             vp.SetValue("何じゃら日本語");
 
@@ -140,6 +142,7 @@ namespace AutomationUITest
                             (int)((rect.Left + rect.Right) / 2),
                             (int)((rect.Top + rect.Bottom) / 2)));
                         Thread.Sleep(500);
+                        DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, "03EACTool.png"), ImageFormat.Png);
                         Mouse.LeftClick();
 
                         break;
@@ -175,6 +178,7 @@ namespace AutomationUITest
             #endregion
 
             txtBD.SetFocus();
+            DisplayUtility.CaptureForegroundWindow().Save(Path.Combine(path, "04EACTool.png"), ImageFormat.Png);
             Thread.Sleep(500);
 
             var btnSave = form.FindFirst(TreeScope.Descendants,
