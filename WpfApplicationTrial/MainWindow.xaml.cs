@@ -33,11 +33,17 @@ namespace WpfApplicationTrial
             };
             this.DataContext = this.Data;
             //this.txtName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = this.Data, });
+            
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.Data.Name = "Bode!";
+        }
+
+        private void txtAge_Error(object sender, ValidationErrorEventArgs e)
+        {
+
         }
     }
 }

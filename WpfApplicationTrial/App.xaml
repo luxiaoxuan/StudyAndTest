@@ -2,8 +2,33 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApplicationTrial"
-             StartupUri="WebUnitTestWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="25" />
+            <Setter Property="Validation.ErrorTemplate">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel LastChildFill="True">
+                            <TextBlock DockPanel.Dock="Bottom" Foreground="Red" Margin="0,2,0,0"
+                                       Text="{Binding ElementName=tb, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                            <AdornedElementPlaceholder x:Name="tb" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="True">
+                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="ToolTip" Value="あ～♡" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="TextBoxErrorTemplate" TargetType="TextBox">
+            <DockPanel LastChildFill="True">
+                <TextBlock DockPanel.Dock="Bottom" Foreground="Red" Margin="0,2,0,0" Text="Error info" />
+                <AdornedElementPlaceholder />
+            </DockPanel>
+        </ControlTemplate>
     </Application.Resources>
 </Application>

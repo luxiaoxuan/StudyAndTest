@@ -14,7 +14,8 @@ namespace WpfApplicationTrial
 
         private string _name;
 
-        [Range(18, 100, ErrorMessage = "年齢が18歳以上でなければなりません。")]
+
+        [Range(18, 100, ErrorMessage = "年齢が18歳から100歳の間でなければなりません。")]
         public int Age
         {
             get
@@ -31,6 +32,7 @@ namespace WpfApplicationTrial
             }
         }
 
+        [MaxLength(10, ErrorMessage = "長過ぎるよ！")]
         public string Name
         {
             get
@@ -40,10 +42,7 @@ namespace WpfApplicationTrial
             set
             {
                 _name = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Name"));
-                }
+                InvokePropertyChange("Name");
             }
         }
 
@@ -57,6 +56,14 @@ namespace WpfApplicationTrial
 
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public void InvokePropertyChange(string propertyName)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
 
 
         public string this[string columnName]
