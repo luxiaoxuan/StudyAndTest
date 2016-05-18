@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnityStudy
+namespace UnityStudy.Unity
 {
     public class MyInterception : IInterceptionBehavior
     {
@@ -29,8 +29,13 @@ namespace UnityStudy
             {
                 Console.WriteLine(" --> " + i.ToString());
             }
+
             var returnValue = getNext()(input, getNext);
-            Console.WriteLine("After praying...");
+
+            Console.Write("Interception: Here is the output:");
+            Console.WriteLine(returnValue.ReturnValue.ToString());
+            Console.WriteLine();
+
             return returnValue;
         }
     }

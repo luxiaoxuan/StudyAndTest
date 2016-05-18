@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnityStudy
+namespace UnityStudy.Unity
 {
-    public class AOPTarget : MarshalByRefObject
+    public class TransparentAOPTarget : MarshalByRefObject
     {
         public string Pray(string tarPlayer, string tarAttr)
         {

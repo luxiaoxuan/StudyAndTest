@@ -30,7 +30,13 @@ namespace WpfApplicationTrial
             this.Data = new InputData
             {
                 Name = "Daibobo",
+                BaselineAge = 25,
             };
+            this.Data.Dic = new Dictionary<string, string>();
+            this.Data.Dic.Add("rai", "RAI");
+            this.Data.Dic.Add("cnc", "CNC");
+            this.Data.ValidationResultDic = new Dictionary<string, CValidationResult[]>();
+
             this.DataContext = this.Data;
             //this.txtName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = this.Data, });
             
@@ -39,6 +45,7 @@ namespace WpfApplicationTrial
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.Data.Name = "Bode!";
+            MessageBox.Show(this.Data["Age"]);
         }
 
         private void txtAge_Error(object sender, ValidationErrorEventArgs e)

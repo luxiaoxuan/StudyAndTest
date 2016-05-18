@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplicationTrial"
+        xmlns:ctm_ctrl="clr-namespace:WpfApplicationTrial.Controls"
         mc:Ignorable="d"
         Title="Smart Application" Height="300" Width="600" ResizeMode="CanMinimize">
     <Grid>
@@ -32,10 +33,13 @@
                     </TextBox.Text>-->
                 </TextBox>
                 <Label x:Name="lbAge" Content="Age:" Grid.Row="1" HorizontalAlignment="Left" />
-                <TextBox x:Name="txtAge" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"
-                         Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Validation.Error="txtAge_Error">
-                </TextBox>
-                <Button x:Name="button" Content="Button" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Width="150" Height="30" Click="button_Click"/>
+                <ctm_ctrl:AlphanumericTextBox x:Name="txtAge" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200" InputRule="^[0-9]*$"
+                                              Text="{Binding Path=Age, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" Validation.Error="txtAge_Error" />
+                <!--Background="{Binding Path=ValidationResultDic.[Age], Converter={StaticResource ValidationResults2Color}}"-->
+                <ctm_ctrl:AlphanumericTextBox x:Name="txtRai_C" Grid.Column="1" Grid.Row="2" Height="25" Width="200" HorizontalAlignment="Left" InputRule="^[a-zA-Z.]*$"
+                                              Text="{Binding Path=Rai, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, NotifyOnValidationError=True}" />
+                <!--Background="{Binding Path=ValidationResultDic.[Rai], Converter={StaticResource ValidationResults2Color}}"-->
+                <Button x:Name="button" Content="{Binding Path=Dic.[rai]}" Grid.Column="1" Grid.Row="4" HorizontalAlignment="Right" Width="150" Height="30" Click="button_Click"/>
             </Grid>
         </GroupBox>
     </Grid>

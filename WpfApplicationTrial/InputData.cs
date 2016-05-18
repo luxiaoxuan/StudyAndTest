@@ -10,25 +10,58 @@ namespace WpfApplicationTrial
 {
     public class InputData : INotifyPropertyChanged, IDataErrorInfo
     {
+        private Dictionary<string, CValidationResult[]> _validationResultDic;
+
+        private Dictionary<string, string> _dic;
+
+
         private int _age;
 
         private string _name;
 
+        private string _rai;
 
-        [Range(18, 100, ErrorMessage = "年齢が18歳から100歳の間でなければなりません。")]
+
+        public Dictionary<string, string> Dic
+        {
+            get
+            {
+                return _dic;
+            }
+            set
+            {
+                _dic = value;
+            }
+        }
+
+        public Dictionary<string, CValidationResult[]> ValidationResultDic
+        {
+            get
+            {
+                return _validationResultDic;
+            }
+            set
+            {
+                _validationResultDic = value;
+            }
+        }
+
+        [Display(Name = "基準年齢")]
+        public int BaselineAge { get; set; }
+
+        [Display(Name = "年齢")]
+        [CRange(18, 100, ErrorMessage = "{0}が{1}歳から{2}歳の間でなければなりません。", ValidationLevel = ValidationLevel.Error)]
+        [CCompare("BaselineAge", ErrorMessage = "{0}が{1}と一致していません。", ValidationLevel = ValidationLevel.Warning)]
         public int Age
         {
             get
             {
-                return this._age;
+                return _age;
             }
             set
             {
-                this._age = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs("Age"));
-                }
+                _age = value;
+                InvokePropertyChange("Age");
             }
         }
 
@@ -45,6 +78,22 @@ namespace WpfApplicationTrial
                 InvokePropertyChange("Name");
             }
         }
+
+        [MaxLength(20, ErrorMessage = "長過ぎるよ！")]
+        [CCompare("BaselineAge", ErrorMessage = "{0}が{1}と一致していません。", ValidationLevel = ValidationLevel.Warning)]
+        public string Rai
+        {
+            get
+            {
+                return this._rai;
+            }
+            set
+            {
+                this._rai = value;
+                InvokePropertyChange("Rai");
+            }
+        }
+
 
         public string Error
         {
@@ -71,15 +120,37 @@ namespace WpfApplicationTrial
             get
             {
                 var property = this.GetType().GetProperty(columnName);
-
-                var vc = new ValidationContext(this);
-                vc.MemberName = columnName;
+                var value = property.GetValue(this, null);
                 var results = new List<ValidationResult>();
-                if (Validator.TryValidateProperty(property.GetValue(this, null), vc, results))
+                var vc = new ValidationContext(this);
+
+                vc.MemberName = columnName;
+
+                if (Validator.TryValidateProperty(value, vc, results))
                 {
                     return string.Empty;
                 }
-                return string.Join(Environment.NewLine, results.Select(r => r.ErrorMessage).ToArray());
+                _validationResultDic[columnName] = results.Select(r => new CValidationResult(r)).ToArray();
+
+                var errors = new List<ValidationResult>();
+                results.ForEach((ValidationResult r) => {
+                    if (!(r is CValidationResult) || ((CValidationResult)r).ValidationLevel == ValidationLevel.Error)
+                    {
+                        errors.Add(r);
+                    }
+                });
+
+                var warnings = new List<ValidationResult>();
+                results.ForEach((ValidationResult r) => {
+                    if (r is CValidationResult && ((CValidationResult)r).ValidationLevel == ValidationLevel.Warning)
+                    {
+                        warnings.Add(r);
+                    }
+                });
+
+                return errors.Count > 0 ?
+                    string.Join(Environment.NewLine, errors.Select(r => r.ErrorMessage).ToArray()) :
+                    string.Join(Environment.NewLine, warnings.Select(r => r.ErrorMessage).ToArray());
             }
         }
 
