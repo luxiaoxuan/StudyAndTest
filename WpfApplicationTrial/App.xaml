@@ -34,7 +34,7 @@
                     <ControlTemplate>
                         <DockPanel LastChildFill="True">
                             <TextBlock DockPanel.Dock="Bottom" Foreground="Red" Margin="0,2,0,0"
-                                       Text="{Binding ElementName=tb, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                                       Text="{Binding ElementName=tb, Converter={StaticResource ValidationError2Display}, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
                             <AdornedElementPlaceholder x:Name="tb" />
                         </DockPanel>
                     </ControlTemplate>
@@ -56,6 +56,7 @@
             </DockPanel>
         </ControlTemplate>
 
+        <cvt:ValidationError2Display x:Key="ValidationError2Display" />
         <cvt:ValidationLevel2Color x:Key="ValidationLevel2Color" />
         <cvt:ValidationResults2Color x:Key="ValidationResults2Color" />
     </Application.Resources>

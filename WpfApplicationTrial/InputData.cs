@@ -149,8 +149,8 @@ namespace WpfApplicationTrial
                 });
 
                 return errors.Count > 0 ?
-                    string.Join(Environment.NewLine, errors.Select(r => r.ErrorMessage).ToArray()) :
-                    string.Join(Environment.NewLine, warnings.Select(r => r.ErrorMessage).ToArray());
+                    "error:" + Environment.NewLine + string.Join(Environment.NewLine, errors.Select(r => r.ErrorMessage).ToArray()) :
+                    "warning:" + Environment.NewLine + string.Join(Environment.NewLine, warnings.Select(r => r.ErrorMessage).ToArray());
             }
         }
 
