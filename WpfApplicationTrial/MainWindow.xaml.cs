@@ -35,7 +35,6 @@ namespace WpfApplicationTrial
             this.Data.Dic = new Dictionary<string, string>();
             this.Data.Dic.Add("rai", "RAI");
             this.Data.Dic.Add("cnc", "CNC");
-            this.Data.ValidationResultDic = new Dictionary<string, CValidationResult[]>();
 
             this.DataContext = this.Data;
             //this.txtName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = this.Data, });

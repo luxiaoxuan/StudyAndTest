@@ -19,11 +19,11 @@ namespace WpfApplicationTrial.Converters
                 var msg = value.ToString();
                 if (msg.StartsWith("error:"))
                 {
-                    return msg.Substring(6);
+                    return msg.Substring(8);
                 }
                 else if (msg.StartsWith("warning:"))
                 {
-                    return msg.Substring(8);
+                    return msg.Substring(10);
                 }
                 else
                 {

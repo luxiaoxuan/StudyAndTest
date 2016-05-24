@@ -60,7 +60,6 @@
     <Compile Include="CCompareAttribute.cs" />
     <Compile Include="Controls\AlphanumericTextBox.cs" />
     <Compile Include="Converters\ValidationError2Display.cs" />
-    <Compile Include="Converters\ValidationResults2Color.cs" />
     <Compile Include="Converters\ValidationLevel2Color.cs" />
     <Compile Include="CValidationResult.cs" />
     <Compile Include="IValidationLevel.cs" />

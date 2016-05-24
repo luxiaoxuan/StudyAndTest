@@ -16,11 +16,11 @@ namespace WpfApplicationTrial.Converters
         {
             if (value is bool && (bool)value)
             {
-                return Brushes.Yellow;
+                return Brushes.Blue;
             }
             else
             {
-                return Brushes.Transparent;
+                return Brushes.Red;
             }
         }
 

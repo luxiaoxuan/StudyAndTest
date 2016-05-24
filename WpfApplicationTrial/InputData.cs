@@ -10,8 +10,6 @@ namespace WpfApplicationTrial
 {
     public class InputData : INotifyPropertyChanged, IDataErrorInfo
     {
-        private Dictionary<string, CValidationResult[]> _validationResultDic;
-
         private Dictionary<string, string> _dic;
 
 
@@ -31,18 +29,6 @@ namespace WpfApplicationTrial
             set
             {
                 _dic = value;
-            }
-        }
-
-        public Dictionary<string, CValidationResult[]> ValidationResultDic
-        {
-            get
-            {
-                return _validationResultDic;
-            }
-            set
-            {
-                _validationResultDic = value;
             }
         }
 
@@ -80,7 +66,7 @@ namespace WpfApplicationTrial
         }
 
         [MaxLength(20, ErrorMessage = "長過ぎるよ！")]
-        [CCompare("BaselineAge", ErrorMessage = "{0}が{1}と一致していません。", ValidationLevel = ValidationLevel.Warning)]
+        [CCompare("BaselineAge", ErrorMessage = "{0}が{1}と一致していません。", ValidationLevel = ValidationLevel.Error)]
         public string Rai
         {
             get
@@ -130,7 +116,6 @@ namespace WpfApplicationTrial
                 {
                     return string.Empty;
                 }
-                _validationResultDic[columnName] = results.Select(r => new CValidationResult(r)).ToArray();
 
                 var errors = new List<ValidationResult>();
                 results.ForEach((ValidationResult r) => {
@@ -153,6 +138,5 @@ namespace WpfApplicationTrial
                     "warning:" + Environment.NewLine + string.Join(Environment.NewLine, warnings.Select(r => r.ErrorMessage).ToArray());
             }
         }
-
     }
 }

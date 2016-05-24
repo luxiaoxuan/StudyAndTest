@@ -15,8 +15,20 @@ namespace WpfApplicationTrial.Controls
     {
         public string InputRule { get; set; }
 
-        public bool HasWarning { get; set; }
+        public bool HasWarning
+        {
+            get
+            {
+                return (bool)GetValue(HasWarningProperty);
+            }
+            set
+            {
+                SetValue(HasWarningProperty, value);
+            }
+        }
 
+        public static readonly DependencyProperty HasWarningProperty = DependencyProperty.Register(
+            "HasWarning", typeof(bool), typeof(AlphanumericTextBox));
 
         public AlphanumericTextBox() : base()
         {
@@ -41,9 +53,17 @@ namespace WpfApplicationTrial.Controls
         {
             base.OnPropertyChanged(e);
 
-            if ("Errors" == e.Property.Name)
+            //Trace.WriteLine(DateTime.Now.ToShortTimeString() + ": " + e.Property.Name);
+
+            if ("Text" == e.Property.Name || "Errors" == e.Property.Name)
             {
                 var errors = Validation.GetErrors(this);
+                if (errors.Count > 0)
+                {
+                    var error = errors.First();
+
+                    this.HasWarning = error.ErrorContent.ToString().StartsWith("warning:");
+                }
             }
         }
     }
