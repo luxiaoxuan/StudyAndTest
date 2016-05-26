@@ -30,11 +30,13 @@ namespace WpfApplicationTrial
             this.Data = new InputData
             {
                 Name = "Daibobo",
-                BaselineAge = 25,
+                //BaselineAge = 25,
             };
-            this.Data.Dic = new Dictionary<string, string>();
-            this.Data.Dic.Add("rai", "RAI");
-            this.Data.Dic.Add("cnc", "CNC");
+            this.Data.Dic = new Dictionary<string, string>
+            {
+                ["rai"] = "RAI",
+                ["cnc"] = "CNC"
+            };
 
             this.DataContext = this.Data;
             //this.txtName.SetBinding(TextBox.TextProperty, new Binding("Name") { Source = this.Data, });

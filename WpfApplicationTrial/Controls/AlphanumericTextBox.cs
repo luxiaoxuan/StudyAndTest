@@ -48,7 +48,6 @@ namespace WpfApplicationTrial.Controls
             base.OnTextInput(e);
         }
 
-
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs e)
         {
             base.OnPropertyChanged(e);

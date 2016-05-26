@@ -23,7 +23,7 @@
                 <Label x:Name="lbName" Content="Name:" HorizontalAlignment="Left" />
                 <TextBox x:Name="txtName" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="200"
                          Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"
-                         InputMethod.PreferredImeState="On" InputMethod.PreferredImeConversionMode="Katakana">
+                         InputMethod.PreferredImeState="On" InputMethod.PreferredImeConversionMode="Katakana" CharacterCasing="Upper">
                     <!--<TextBox.Text>
                         <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>

@@ -33,7 +33,7 @@ namespace WpfApplicationTrial
         }
 
         [Display(Name = "基準年齢")]
-        public int BaselineAge { get; set; }
+        public int BaselineAge { get; set; } = 32;
 
         [Display(Name = "年齢")]
         [CRange(18, 100, ErrorMessage = "{0}が{1}歳から{2}歳の間でなければなりません。", ValidationLevel = ValidationLevel.Error)]
@@ -47,7 +47,7 @@ namespace WpfApplicationTrial
             set
             {
                 _age = value;
-                InvokePropertyChange("Age");
+                InvokePropertyChange(nameof(Age));
             }
         }
 
@@ -61,7 +61,7 @@ namespace WpfApplicationTrial
             set
             {
                 _name = value;
-                InvokePropertyChange("Name");
+                InvokePropertyChange(nameof(Name));
             }
         }
 
@@ -71,12 +71,12 @@ namespace WpfApplicationTrial
         {
             get
             {
-                return this._rai;
+                return _rai;
             }
             set
             {
-                this._rai = value;
-                InvokePropertyChange("Rai");
+                _rai = value;
+                InvokePropertyChange(nameof(Rai));
             }
         }
 
