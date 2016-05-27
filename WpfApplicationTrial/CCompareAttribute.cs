@@ -15,12 +15,12 @@ namespace WpfApplicationTrial
         public CCompareAttribute(string otherProperty) : base(otherProperty) { }
 
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            var result = new CValidationResult(base.IsValid(value, validationContext));
-            result.ValidationLevel = this.ValidationLevel;
+        //protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        //{
+        //    var result = new CValidationResult(base.IsValid(value, validationContext));
+        //    result.ValidationLevel = this.ValidationLevel;
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

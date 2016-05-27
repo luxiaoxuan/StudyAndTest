@@ -19,10 +19,11 @@ namespace WpfApplicationTrial
         public CRangeAttribute(Type type, string minimum, string maximum) : base(type, minimum, maximum) { }
 
 
-        protected override ValidationResult IsValid(object value, ValidationContext validationContext)
-        {
-            return base.IsValid(value) ?
-                ValidationResult.Success : new ValidationResult(base.FormatErrorMessage(validationContext.DisplayName));
-        }
+        //protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+        //{
+        //    return base.IsValid(value) ?
+        //        ValidationResult.Success :
+        //        new CValidationResult(base.FormatErrorMessage(validationContext.DisplayName)) { ValidationLevel = this.ValidationLevel };
+        //}
     }
 }

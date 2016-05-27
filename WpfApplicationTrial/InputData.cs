@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace WpfApplicationTrial
 {
-    public class InputData : INotifyPropertyChanged, IDataErrorInfo
+    public class InputData : INotifyPropertyChanged, IDataErrorInfo//, INotifyDataErrorInfo
     {
         private Dictionary<string, string> _dic;
 
@@ -112,6 +112,32 @@ namespace WpfApplicationTrial
 
                 vc.MemberName = columnName;
 
+                #region Method 2
+
+                var vAttrs = property.GetCustomAttributes(true).Where(a => a is IValidationLevel).Cast<IValidationLevel>();
+                var errorAttr = vAttrs.Where(a => a.ValidationLevel == ValidationLevel.Error).Cast<ValidationAttribute>();
+                var warningAttr = vAttrs.Where(a => a.ValidationLevel == ValidationLevel.Warning).Cast<ValidationAttribute>();
+
+                if (Validator.TryValidateValue(value, vc, results, errorAttr))
+                {
+                    if (Validator.TryValidateValue(value, vc, results, warningAttr))
+                    {
+                        return string.Empty;
+                    }
+                    else
+                    {
+                        return "warning:" + Environment.NewLine + string.Join(Environment.NewLine, results.Select(r => r.ErrorMessage).ToArray());
+                    }
+                }
+                else
+                {
+                    return "error:" + Environment.NewLine + string.Join(Environment.NewLine, results.Select(r => r.ErrorMessage).ToArray());
+                }
+
+                #endregion
+
+                #region Method 1
+
                 if (Validator.TryValidateProperty(value, vc, results))
                 {
                     return string.Empty;
@@ -136,6 +162,8 @@ namespace WpfApplicationTrial
                 return errors.Count > 0 ?
                     "error:" + Environment.NewLine + string.Join(Environment.NewLine, errors.Select(r => r.ErrorMessage).ToArray()) :
                     "warning:" + Environment.NewLine + string.Join(Environment.NewLine, warnings.Select(r => r.ErrorMessage).ToArray());
+
+                #endregion
             }
         }
     }

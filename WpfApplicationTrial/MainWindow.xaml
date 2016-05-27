@@ -27,7 +27,7 @@
                     <!--<TextBox.Text>
                         <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <local:LengthValidationRule />
+                                <local:LengthValidationRule ValidationStep="UpdatedValue" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>-->

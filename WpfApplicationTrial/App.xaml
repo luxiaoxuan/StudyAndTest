@@ -13,7 +13,7 @@
             <DockPanel LastChildFill="True">
                 <TextBlock DockPanel.Dock="Bottom" Margin="0,2,0,0"
                                        Foreground="{Binding ElementName=tb, Converter={StaticResource ValidationLevel2Color}, Path=AdornedElement.HasWarning}"
-                                       Text="{Binding ElementName=tb, Converter={StaticResource ValidationError2Display}, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                                       Text="{Binding ElementName=tb, Converter={StaticResource ValidationError2Display}, Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}" />
                 <AdornedElementPlaceholder x:Name="tb" />
             </DockPanel>
         </ControlTemplate>
@@ -25,7 +25,7 @@
                     <ControlTemplate>
                         <DockPanel LastChildFill="True">
                             <TextBlock DockPanel.Dock="Bottom" Foreground="Red" Margin="0,2,0,0"
-                                       Text="{Binding ElementName=tb, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}" />
+                                       Text="{Binding ElementName=tb, Path=AdornedElement.(Validation.Errors).CurrentItem.ErrorContent}" />
                             <AdornedElementPlaceholder x:Name="tb" />
                         </DockPanel>
                     </ControlTemplate>
