@@ -74,6 +74,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
     <Content Include="TestData\input-self-info_001.json" />
     <None Include="TestData\input-self-info_002.json" />
