@@ -369,8 +369,6 @@ namespace LXXTestSite.Basics {
             
             private global::System.Data.DataColumn columnF45;
             
-            private global::System.Data.DataColumn columnF46;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BugsDataTable() {
@@ -766,14 +764,6 @@ namespace LXXTestSite.Basics {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn F46Column {
-                get {
-                    return this.columnF46;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -825,11 +815,11 @@ namespace LXXTestSite.Basics {
                         string F13, 
                         string F14, 
                         string F15, 
-                        string F16, 
-                        string F17, 
-                        string F18, 
+                        System.DateTime F16, 
+                        System.DateTime F17, 
+                        System.DateTime F18, 
                         string F19, 
-                        string F20, 
+                        System.DateTime F20, 
                         string F21, 
                         string F22, 
                         string F23, 
@@ -854,8 +844,7 @@ namespace LXXTestSite.Basics {
                         string F42, 
                         string F43, 
                         string F44, 
-                        string F45, 
-                        string F46) {
+                        string F45) {
                 BugsRow rowBugsRow = ((BugsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         F1,
@@ -902,8 +891,7 @@ namespace LXXTestSite.Basics {
                         F42,
                         F43,
                         F44,
-                        F45,
-                        F46};
+                        F45};
                 rowBugsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBugsRow);
                 return rowBugsRow;
@@ -971,7 +959,6 @@ namespace LXXTestSite.Basics {
                 this.columnF43 = base.Columns["F43"];
                 this.columnF44 = base.Columns["F44"];
                 this.columnF45 = base.Columns["F45"];
-                this.columnF46 = base.Columns["F46"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1007,15 +994,15 @@ namespace LXXTestSite.Basics {
                 base.Columns.Add(this.columnF14);
                 this.columnF15 = new global::System.Data.DataColumn("F15", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF15);
-                this.columnF16 = new global::System.Data.DataColumn("F16", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnF16 = new global::System.Data.DataColumn("F16", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF16);
-                this.columnF17 = new global::System.Data.DataColumn("F17", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnF17 = new global::System.Data.DataColumn("F17", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF17);
-                this.columnF18 = new global::System.Data.DataColumn("F18", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnF18 = new global::System.Data.DataColumn("F18", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF18);
                 this.columnF19 = new global::System.Data.DataColumn("F19", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF19);
-                this.columnF20 = new global::System.Data.DataColumn("F20", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnF20 = new global::System.Data.DataColumn("F20", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF20);
                 this.columnF21 = new global::System.Data.DataColumn("F21", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF21);
@@ -1067,8 +1054,6 @@ namespace LXXTestSite.Basics {
                 base.Columns.Add(this.columnF44);
                 this.columnF45 = new global::System.Data.DataColumn("F45", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnF45);
-                this.columnF46 = new global::System.Data.DataColumn("F46", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnF46);
                 this.columnF3.MaxLength = 255;
                 this.columnF4.MaxLength = 255;
                 this.columnF6.MaxLength = 255;
@@ -1081,11 +1066,7 @@ namespace LXXTestSite.Basics {
                 this.columnF13.MaxLength = 255;
                 this.columnF14.MaxLength = 255;
                 this.columnF15.MaxLength = 255;
-                this.columnF16.MaxLength = 255;
-                this.columnF17.MaxLength = 255;
-                this.columnF18.MaxLength = 255;
                 this.columnF19.MaxLength = 255;
-                this.columnF20.MaxLength = 255;
                 this.columnF21.MaxLength = 255;
                 this.columnF22.MaxLength = 536870910;
                 this.columnF23.MaxLength = 255;
@@ -1110,7 +1091,6 @@ namespace LXXTestSite.Basics {
                 this.columnF42.MaxLength = 255;
                 this.columnF43.MaxLength = 255;
                 this.columnF44.MaxLength = 255;
-                this.columnF46.MaxLength = 536870910;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1287,11 +1267,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F3 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F3Column]));
+                    if (this.IsF3Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F3\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F3Column]));
                     }
                 }
                 set {
@@ -1303,11 +1283,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F4 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F4Column]));
+                    if (this.IsF4Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F4\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F4Column]));
                     }
                 }
                 set {
@@ -1415,11 +1395,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F11 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F11Column]));
+                    if (this.IsF11Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F11\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F11Column]));
                     }
                 }
                 set {
@@ -1431,11 +1411,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F12 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F12Column]));
+                    if (this.IsF12Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F12\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F12Column]));
                     }
                 }
                 set {
@@ -1447,11 +1427,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F13 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F13Column]));
+                    if (this.IsF13Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F13\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F13Column]));
                     }
                 }
                 set {
@@ -1463,11 +1443,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F14 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F14Column]));
+                    if (this.IsF14Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F14\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F14Column]));
                     }
                 }
                 set {
@@ -1479,11 +1459,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F15 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F15Column]));
+                    if (this.IsF15Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F15\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F15Column]));
                     }
                 }
                 set {
@@ -1493,10 +1473,10 @@ namespace LXXTestSite.Basics {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string F16 {
+            public System.DateTime F16 {
                 get {
                     try {
-                        return ((string)(this[this.tableBugs.F16Column]));
+                        return ((global::System.DateTime)(this[this.tableBugs.F16Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F16\' の値は DBNull です。", e);
@@ -1509,10 +1489,10 @@ namespace LXXTestSite.Basics {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string F17 {
+            public System.DateTime F17 {
                 get {
                     try {
-                        return ((string)(this[this.tableBugs.F17Column]));
+                        return ((global::System.DateTime)(this[this.tableBugs.F17Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F17\' の値は DBNull です。", e);
@@ -1525,10 +1505,10 @@ namespace LXXTestSite.Basics {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string F18 {
+            public System.DateTime F18 {
                 get {
                     try {
-                        return ((string)(this[this.tableBugs.F18Column]));
+                        return ((global::System.DateTime)(this[this.tableBugs.F18Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F18\' の値は DBNull です。", e);
@@ -1557,10 +1537,10 @@ namespace LXXTestSite.Basics {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string F20 {
+            public System.DateTime F20 {
                 get {
                     try {
-                        return ((string)(this[this.tableBugs.F20Column]));
+                        return ((global::System.DateTime)(this[this.tableBugs.F20Column]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F20\' の値は DBNull です。", e);
@@ -1943,11 +1923,11 @@ namespace LXXTestSite.Basics {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string F44 {
                 get {
-                    try {
-                        return ((string)(this[this.tableBugs.F44Column]));
+                    if (this.IsF44Null()) {
+                        return null;
                     }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F44\' の値は DBNull です。", e);
+                    else {
+                        return ((string)(this[this.tableBugs.F44Column]));
                     }
                 }
                 set {
@@ -1968,22 +1948,6 @@ namespace LXXTestSite.Basics {
                 }
                 set {
                     this[this.tableBugs.F45Column] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string F46 {
-                get {
-                    try {
-                        return ((string)(this[this.tableBugs.F46Column]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("テーブル \'Bugs\' にある列 \'F46\' の値は DBNull です。", e);
-                    }
-                }
-                set {
-                    this[this.tableBugs.F46Column] = value;
                 }
             }
             
@@ -2526,18 +2490,6 @@ namespace LXXTestSite.Basics {
             public void SetF45Null() {
                 this[this.tableBugs.F45Column] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsF46Null() {
-                return this.IsNull(this.tableBugs.F46Column);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetF46Null() {
-                this[this.tableBugs.F46Column] = global::System.Convert.DBNull;
-            }
         }
         
         /// <summary>
@@ -2744,11 +2696,10 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("F43", "F43");
             tableMapping.ColumnMappings.Add("F44", "F44");
             tableMapping.ColumnMappings.Add("F45", "F45");
-            tableMapping.ColumnMappings.Add("F46", "F46");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.InsertCommand = new global::System.Data.OleDb.OleDbCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO `Bugs` (`F1`, `F2`, `F3`, `F4`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F12`, `F13`, `F14`, `F15`, `F16`, `F17`, `F18`, `F19`, `F20`, `F21`, `F22`, `F23`, `F24`, `F25`, `F26`, `F27`, `F28`, `F29`, `F30`, `F31`, `F32`, `F33`, `F34`, `F35`, `F36`, `F37`, `F38`, `F39`, `F40`, `F41`, `F42`, `F43`, `F44`, `F45`, `F46`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO `Bugs` (`F1`, `F2`, `F3`, `F4`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F12`, `F13`, `F14`, `F15`, `F16`, `F17`, `F18`, `F19`, `F20`, `F21`, `F22`, `F23`, `F24`, `F25`, `F26`, `F27`, `F28`, `F29`, `F30`, `F31`, `F32`, `F33`, `F34`, `F35`, `F36`, `F37`, `F38`, `F39`, `F40`, `F41`, `F42`, `F43`, `F44`, `F45`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F1", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F1", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F2", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F2", global::System.Data.DataRowVersion.Current, false, null));
@@ -2765,11 +2716,11 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F13", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F13", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F14", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F14", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F15", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F15", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F16", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F16", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F17", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F17", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F18", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F18", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F16", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F16", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F17", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F17", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F18", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F18", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F19", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F19", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F20", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F20", global::System.Data.DataRowVersion.Current, false, null));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F20", global::System.Data.OleDb.OleDbType.Date, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F20", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F21", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F21", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F22", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F22", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F23", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F23", global::System.Data.DataRowVersion.Current, false, null));
@@ -2795,7 +2746,6 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F43", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F43", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F44", global::System.Data.OleDb.OleDbType.VarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F44", global::System.Data.DataRowVersion.Current, false, null));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F45", global::System.Data.OleDb.OleDbType.Double, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F45", global::System.Data.DataRowVersion.Current, false, null));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.OleDb.OleDbParameter("F46", global::System.Data.OleDb.OleDbType.LongVarWChar, 0, global::System.Data.ParameterDirection.Input, ((byte)(0)), ((byte)(0)), "F46", global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2813,7 +2763,7 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, F13, F14, F15, F16, F17" +
                 ", F18, F19, F20, F21, F22, F23, F24, F25, F26, F27, F28, F29, F30, F31, F32, F33" +
-                ", F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45, F46 FROM Bugs";
+                ", F34, F35, F36, F37, F38, F39, F40, F41, F42, F43, F44, F45 FROM Bugs";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2890,11 +2840,11 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
                     string F13, 
                     string F14, 
                     string F15, 
-                    string F16, 
-                    string F17, 
-                    string F18, 
+                    global::System.Nullable<global::System.DateTime> F16, 
+                    global::System.Nullable<global::System.DateTime> F17, 
+                    global::System.Nullable<global::System.DateTime> F18, 
                     string F19, 
-                    string F20, 
+                    global::System.Nullable<global::System.DateTime> F20, 
                     string F21, 
                     string F22, 
                     string F23, 
@@ -2919,8 +2869,7 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
                     string F42, 
                     string F43, 
                     string F44, 
-                    global::System.Nullable<double> F45, 
-                    string F46) {
+                    global::System.Nullable<double> F45) {
             if ((F1.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[0].Value = ((double)(F1.Value));
             }
@@ -3011,23 +2960,23 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[14].Value = ((string)(F15));
             }
-            if ((F16 == null)) {
+            if ((F16.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[15].Value = ((System.DateTime)(F16.Value));
+            }
+            else {
                 this.Adapter.InsertCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[15].Value = ((string)(F16));
+            if ((F17.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[16].Value = ((System.DateTime)(F17.Value));
             }
-            if ((F17 == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.InsertCommand.Parameters[16].Value = ((string)(F17));
+            if ((F18.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[17].Value = ((System.DateTime)(F18.Value));
             }
-            if ((F18 == null)) {
+            else {
                 this.Adapter.InsertCommand.Parameters[17].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[17].Value = ((string)(F18));
             }
             if ((F19 == null)) {
                 this.Adapter.InsertCommand.Parameters[18].Value = global::System.DBNull.Value;
@@ -3035,11 +2984,11 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             else {
                 this.Adapter.InsertCommand.Parameters[18].Value = ((string)(F19));
             }
-            if ((F20 == null)) {
-                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
+            if ((F20.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[19].Value = ((System.DateTime)(F20.Value));
             }
             else {
-                this.Adapter.InsertCommand.Parameters[19].Value = ((string)(F20));
+                this.Adapter.InsertCommand.Parameters[19].Value = global::System.DBNull.Value;
             }
             if ((F21 == null)) {
                 this.Adapter.InsertCommand.Parameters[20].Value = global::System.DBNull.Value;
@@ -3190,12 +3139,6 @@ namespace LXXTestSite.Basics.BugDataSetTableAdapters {
             }
             else {
                 this.Adapter.InsertCommand.Parameters[44].Value = global::System.DBNull.Value;
-            }
-            if ((F46 == null)) {
-                this.Adapter.InsertCommand.Parameters[45].Value = global::System.DBNull.Value;
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[45].Value = ((string)(F46));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -12,8 +12,7 @@ namespace LXXTestSite.Basics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var dt = new BugDataSet().Bugs;
-            new BugsTableAdapter().Fill(dt);
+            var dt = new BugsTableAdapter().GetData();
 
             this.rptBug.DataSource = dt.Where(r => !r.IsF2Null() && !r.IsF4Null() && "#Num!" != r.F2 && "#N/A" != r.F4);
             this.rptBug.DataBind();

@@ -68,7 +68,7 @@ namespace LXXTestSite.Basics
             var ds = new List<dynamic>();
             for (var i = 0; i < dt.Columns.Count; i++)
             {
-                var c = bug[i]?.ToString().Replace("\n", "<br />");
+                var c = bug[i]?.ToString().Replace("_x000D_", string.Empty).Replace("\n", "<br />");
 
                 ds.Add(new
                 {
