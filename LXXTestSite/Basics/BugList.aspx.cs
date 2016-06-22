@@ -10,12 +10,15 @@ namespace LXXTestSite.Basics
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
+        private readonly static string[] TarNos = new string[]
+        {
+            "12489", "12496", "12526", "12588", "12593", "12648", "12689",
+        };
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            var bugList = this.GetData();
-            this.rptBug.DataSource = bugList;
-            this.rptBug.DataBind();
-            this.ltCount.Text = bugList.Count.ToString();
+            this.RefreshDatas(this.chbTar.Checked ? this.GetData().Where(b => TarNos.Contains(b.No)) : this.GetData());
         }
 
         protected void ddlStatus_SelectedIndexChanged(object sender, EventArgs e)
@@ -23,13 +26,22 @@ namespace LXXTestSite.Basics
             var bugList = this.GetData();
             if (this.ddlStatus.SelectedValue != "全て")
             {
-                bugList = bugList.Where(r => r.Mikomi == this.ddlStatus.SelectedValue).ToList();
+                this.RefreshDatas(bugList.Where(r => r.Mikomi == this.ddlStatus.SelectedValue));
             }
-
-            this.rptBug.DataSource = bugList;
-            this.rptBug.DataBind();
-            this.ltCount.Text = bugList.Count.ToString();
+            else
+            {
+                this.RefreshDatas(bugList);
+            }
         }
+
+        protected void chbTar_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ddlStatus.SelectedValue = "全て";
+            this.ddlStatus.Enabled = !this.chbTar.Checked;
+
+            this.RefreshDatas(this.chbTar.Checked ? this.GetData().Where(b => TarNos.Contains(b.No)) : this.GetData());
+        }
+
 
         private List<Bug> GetData()
         {
@@ -72,6 +84,13 @@ namespace LXXTestSite.Basics
             }
 
             return bugList;
+        }
+
+        private void RefreshDatas(IEnumerable<dynamic> ds)
+        {
+            this.rptBug.DataSource = ds;
+            this.rptBug.DataBind();
+            this.ltCount.Text = ds.Count().ToString();
         }
     }
 }

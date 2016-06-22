@@ -21,20 +21,21 @@
 </head>
 <body>
     <form runat="server">
+        <div style="text-align: right; width: 90%;">
+            <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged" Enabled="false">
+                <asp:ListItem Value="全て" />
+                <asp:ListItem Value="○" />
+                <asp:ListItem Value="△" />
+                <asp:ListItem Value="×" />
+            </asp:DropDownList>
+            <asp:CheckBox ID="chbTar" runat="server" Text="上海対応対象" Checked="true" AutoPostBack="true" OnCheckedChanged="chbTar_CheckedChanged" />
+        </div>
         <table class="table">
             <caption class="h1 text-center">障害一覧</caption>
             <thead>
                 <tr>
-                    <td colspan="5">件数：
-                    <asp:Literal ID="ltCount" runat="server" />
-                    </td>
-                    <td style="text-align: right;">
-                        <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged">
-                            <asp:ListItem Value="全て" />
-                            <asp:ListItem Value="○" />
-                            <asp:ListItem Value="△" />
-                            <asp:ListItem Value="×" />
-                        </asp:DropDownList>
+                    <td colspan="6">件数：
+                        <asp:Literal ID="ltCount" runat="server" />
                     </td>
                 </tr>
             </thead>
