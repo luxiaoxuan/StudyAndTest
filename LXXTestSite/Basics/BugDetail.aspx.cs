@@ -1,11 +1,11 @@
-﻿using LXXTestSite.Basics.BugDataSetTableAdapters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace LXXTestSite.Basics
 {
@@ -13,72 +13,69 @@ namespace LXXTestSite.Basics
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var dt = new BugsTableAdapter().GetData();
-            var bug = dt.First(r => r.F2 == this.Request.QueryString["TicketNo"]);
-            var names = new string[]
+            var no = this.Request.QueryString["TicketNo"];
+            var bug = this.GetData(no);
+
+            this.rptRow.DataSource = bug.Details.Select(p => new
             {
-                "No.",
-                "チケットNo.",
-                "ステータス",
-                "題名",
-                "発生日",
-                "ＭＤ区分",
-                "業務所管",
-                "優先度MRI",
-                "優先度DCS",
-                "優先度MD",
-                "調整メモ",
-                "対応チーム",
-                "ｽﾃｰﾀｽ",
-                "本番ﾘﾘｰｽ予定日",
-                "暫定対応",
-                "調査",
-                "恒久対応承認",
-                "実装",
-                "検証ﾘﾘｰｽ予定日",
-                "業務検証",
-                "障害発生機能名",
-                "障害内容＿詳細",
-                "顧客対応内容",
-                "社内対応内容",
-                "システム対応内容",
-                "暫定対応承認日_MRI",
-                "暫定対応承認者_MRI",
-                "暫定対応承認日_DCS",
-                "暫定対応承認者_DCS",
-                "原因システム",
-                "表層原因",
-                "恒久対応内容",
-                "＃恒久対応承認日_MRI",
-                "＃恒久対応承認者_MRI",
-                "＃恒久対応承認日_DCS",
-                "＃恒久対応承認者_DCS",
-                "検証環境リリース予定日",
-                "検証環境リリース実施日",
-                "テスト結果確認方法",
-                "テスト結果業務所管確認日_MRI",
-                "テスト結果業務所管確認結果_MRI",
-                "テスト結果業務所管確認者_MRI",
-                "テスト結果業務所管確認日_DCS",
-                "テスト結果業務所管確認結果_DCS",
-                "テスト結果業務所管確認者_DCS",
-                "説明",
+                Name = p.Key,
+                Value = p.Value,
+            });
+            this.rptRow.DataBind();
+
+            this.Title = this.Title + string.Format("＜{0}＞", no);
+        }
+
+        private Bug GetData(string ticketNo)
+        {
+            var bug = new Bug
+            {
+                Details = new Dictionary<string, string>(),
             };
-
-            var ds = new List<dynamic>();
-            for (var i = 0; i < dt.Columns.Count; i++)
+            var wb = new Excel.Application().Workbooks.Open(@"C:\Subversion\BASICS\01 管理\70_障害管理\伝票障害一覧_最新_20160617上海記入.xlsx");
+            try
             {
-                var c = bug[i]?.ToString().Replace("_x000D_", string.Empty).Replace("\n", "<br />");
+                var ws = wb.Worksheets[1] as Excel.Worksheet;
 
-                ds.Add(new
+                var r = 6;
+                var cNo = ws.Cells[r, 2] as Excel.Range;
+                var no = cNo.Value?.ToString();
+                while (no != null)
                 {
-                    Name = names[i],
-                    Content = c,
-                });
+                    if (no == ticketNo)
+                    {
+                        var c = 1;
+                        var cName = ws.Cells[4, c] as Excel.Range;
+                        var name = cName.Value;
+                        while (name != null)
+                        {
+                            bug.Details.Add(
+                                name.ToString(),
+                                (ws.Cells[r, c] as Excel.Range).Value?.ToString()
+                                    .Replace("\r\n", "<br />")
+                                    .Replace("\r", "<br />")
+                                    .Replace("\n", "<br />")
+                            );
+
+                            c++;
+                            cName = ws.Cells[4, c] as Excel.Range;
+                            name = cName.Value;
+                        }
+
+                        break;
+                    }
+
+                    r++;
+                    cNo = ws.Cells[r, 2] as Excel.Range;
+                    no = cNo.Value?.ToString();
+                }
+            }
+            finally
+            {
+                wb.Close(true);
             }
 
-            this.rptRow.DataSource = ds;
-            this.rptRow.DataBind();
+            return bug;
         }
     }
 }

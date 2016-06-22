@@ -32,7 +32,7 @@
                     <tr>
                         <td class="col-md-2"><%# Eval("Name") %></td>
                         <td>
-                            <%# Eval("Content") %>
+                            <%# Eval("Value") %>
                         </td>
                     </tr>
                 </ItemTemplate>

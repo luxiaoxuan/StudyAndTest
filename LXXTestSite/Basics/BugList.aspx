@@ -15,30 +15,47 @@
             font-family: HGGyoshotai;
             font-size: 2em;
             margin: 20px auto;
-            width: 60%;
+            width: 90%;
         }
     </style>
 </head>
 <body>
-    <table class="table">
-        <caption class="h1 text-center">障害一覧</caption>
-        <tbody>
-            <asp:Repeater ID="rptBug" runat="server">
-                <ItemTemplate>
-                    <tr>
-                        <td><%# Eval("F1") %></td>
-                        <td><%# Eval("F2") %></td>
-                        <td><%# Eval("F8") %></td>
-                        <td><%# Eval("F9") %></td>
-                        <td><%# Eval("F10") %></td>
-                        <td>
-                            <asp:DynamicHyperLink runat="server" Text='<%# Eval("F4") %>'
-                                NavigateUrl='<%# "~/Basics/BugDetail.aspx?TicketNo=" + Eval("F2").ToString() %>' />
-                        </td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+    <form runat="server">
+        <table class="table">
+            <caption class="h1 text-center">障害一覧</caption>
+            <thead>
+                <tr>
+                    <td colspan="5">件数：
+                    <asp:Literal ID="ltCount" runat="server" />
+                    </td>
+                    <td style="text-align: right;">
+                        <asp:DropDownList ID="ddlStatus" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlStatus_SelectedIndexChanged">
+                            <asp:ListItem Value="全て" />
+                            <asp:ListItem Value="○" />
+                            <asp:ListItem Value="△" />
+                            <asp:ListItem Value="×" />
+                        </asp:DropDownList>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="rptBug" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <td><%# Eval("Id") %></td>
+                            <td>
+                                <asp:DynamicHyperLink runat="server" Text='<%# Eval("No") %>'
+                                    NavigateUrl='<%# "~/Basics/BugDetail.aspx?TicketNo=" + Eval("No").ToString() %>' />
+                            </td>
+                            <td><%# Eval("Mikomi") %></td>
+                            <td style="width: 25%;"><%# Eval("Biko") %></td>
+                            <td style="width: 25%;"><%# Eval("LackDoc") %></td>
+                            <td><%# Eval("Title") %></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
+    </form>
 </body>
 </html>

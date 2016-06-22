@@ -56,6 +56,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -91,22 +94,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\BasicsBug.accdb" />
     <Content Include="Basics\BugDetail.aspx" />
     <Content Include="Basics\BugList.aspx" />
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
-    <Content Include="Basics\BugDataSet.xsc">
-      <DependentUpon>BugDataSet.xsd</DependentUpon>
-    </Content>
-    <None Include="Basics\BugDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BugDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="Basics\BugDataSet.xss">
-      <DependentUpon>BugDataSet.xsd</DependentUpon>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,11 +129,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Basics\BugDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BugDataSet.xsd</DependentUpon>
-    </Compile>
+    <Compile Include="Basics\Bug.cs" />
     <Compile Include="Basics\BugDetail.aspx.cs">
       <DependentUpon>BugDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
